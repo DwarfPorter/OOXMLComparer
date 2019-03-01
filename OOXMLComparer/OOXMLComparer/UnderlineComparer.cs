@@ -9,7 +9,23 @@ namespace OOXMLComparer
     {
         public bool Compare(Underline a, Underline b)
         {
-            return a.Val.Equals(b.Val);
+            if (a == null && b == null)
+            {
+                return true;
+            }
+            if (a == null && b.Val == UnderlineValues.None)
+            {
+                return true;
+            }
+            if (b == null && a.Val == UnderlineValues.None)
+            {
+                return true;
+            }
+            if (a == null || b == null)
+            {
+                return false;
+            }
+            return Equals(a.Val, b.Val);
         }
     }
 }
