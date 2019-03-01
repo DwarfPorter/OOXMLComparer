@@ -1,5 +1,6 @@
 ﻿using DocumentFormat.OpenXml.Wordprocessing;
 using NUnit.Framework;
+using OOXMLComparer.Properties;
 
 namespace OOXMLComparer.Test
 {

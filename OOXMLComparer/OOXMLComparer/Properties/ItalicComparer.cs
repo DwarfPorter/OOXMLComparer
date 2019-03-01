@@ -1,6 +1,6 @@
 ﻿using DocumentFormat.OpenXml.Wordprocessing;
 
-namespace OOXMLComparer
+namespace OOXMLComparer.Properties
 {
     public class ItalicComparer : OnOffComparer, IOpenXmlElementComparer<Italic>
     {

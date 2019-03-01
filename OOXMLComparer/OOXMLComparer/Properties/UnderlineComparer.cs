@@ -1,9 +1,6 @@
 ﻿using DocumentFormat.OpenXml.Wordprocessing;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace OOXMLComparer
+namespace OOXMLComparer.Properties
 {
     public class UnderlineComparer : IOpenXmlElementComparer<Underline>
     {
