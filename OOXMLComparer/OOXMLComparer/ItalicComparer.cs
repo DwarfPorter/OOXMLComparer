@@ -2,9 +2,9 @@
 
 namespace OOXMLComparer
 {
-    public class BoldComparer : OnOffComparer, IOpenXmlElementComparer<Bold>
+    public class ItalicComparer : OnOffComparer, IOpenXmlElementComparer<Italic>
     {
-        public bool Compare(Bold a, Bold b)
+        public bool Compare(Italic a, Italic b)
         {
             return base.Compare((OnOffType)a, (OnOffType)b);
         }
