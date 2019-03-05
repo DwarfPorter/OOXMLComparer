@@ -17,8 +17,13 @@ namespace OOXMLComparer.Test
             a = new PresetGeometry { Preset = ShapeTypeValues.Rectangle, AdjustValueList = new AdjustValueList() };
             b = new PresetGeometry { Preset = ShapeTypeValues.Rectangle, AdjustValueList = new AdjustValueList() };
             Assert.IsTrue(new PresetGeometryComparer(a, b).Compare());
+
+            var c = new PresetGeometry();
+            Assert.IsTrue(new PresetGeometryComparer(c, null).Compare());
+            Assert.IsTrue(new PresetGeometryComparer(null, c).Compare());
         }
 
+        [Test]
         public void PresetGeometryComparerWrongTest()
         {
             var a = new PresetGeometry { Preset = ShapeTypeValues.Rectangle };
@@ -28,6 +33,7 @@ namespace OOXMLComparer.Test
             Assert.IsFalse(new PresetGeometryComparer(a, c).Compare());
         }
 
+        [Test]
         public void PresetGeometryComparerNullTest()
         {
             var a = new PresetGeometry { Preset = ShapeTypeValues.Rectangle };
