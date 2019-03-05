@@ -1,7 +1,8 @@
 ﻿using DocumentFormat.OpenXml;
+using DocumentFormat.OpenXml.Drawing;
 using DocumentFormat.OpenXml.Wordprocessing;
+using OOXMLComparer.Drawing;
 using OOXMLComparer.Properties;
-using System;
 
 namespace OOXMLComparer
 {
@@ -9,17 +10,17 @@ namespace OOXMLComparer
     {
         public IOpenXmlElementComparer Create(OpenXmlElement a, OpenXmlElement b)
         {
-            if (CheckType<Text>(a, b))
+            if (CheckType<DocumentFormat.OpenXml.Wordprocessing.Text>(a, b))
             {
-                return new TextComparer((Text) a, (Text)b);
+                return new TextComparer((DocumentFormat.OpenXml.Wordprocessing.Text) a, (DocumentFormat.OpenXml.Wordprocessing.Text)b);
             }
-            if (CheckType<Underline>(a, b))
+            if (CheckType<DocumentFormat.OpenXml.Wordprocessing.Underline>(a, b))
             {
-                return new UnderlineComparer((Underline)a, (Underline)b);
+                return new UnderlineComparer((DocumentFormat.OpenXml.Wordprocessing.Underline)a, (DocumentFormat.OpenXml.Wordprocessing.Underline)b);
             }
-            if(CheckType<RunProperties>(a, b))
+            if(CheckType<DocumentFormat.OpenXml.Wordprocessing.RunProperties>(a, b))
             {
-                return new RunPropertiesComparer((RunProperties)a, (RunProperties)b);
+                return new RunPropertiesComparer((DocumentFormat.OpenXml.Wordprocessing.RunProperties)a, (DocumentFormat.OpenXml.Wordprocessing.RunProperties)b);
             }
             if(CheckType<RunFonts>(a, b))
             {
@@ -40,6 +41,22 @@ namespace OOXMLComparer
             if (CheckType<Bold>(a, b))
             {
                 return new BoldComparer((Bold)a, (Bold)b);
+            }
+            if (CheckType<Extents>(a, b))
+            {
+                return new ExtentsComparer((Extents)a, (Extents)b);
+            }
+            if (CheckType<Offset>(a, b))
+            {
+                return new OffsetComparer((Offset)a, (Offset)b);
+            }
+            if (CheckType<PresetGeometry>(a, b))
+            {
+                return new PresetGeometryComparer((PresetGeometry)a, (PresetGeometry)b);
+            }
+            if (CheckType<Transform2D>(a, b))
+            {
+                return new Transform2DComparer((Transform2D)a, (Transform2D)b);
             }
 
             return new OpenXmlElementComparer(a, b);
