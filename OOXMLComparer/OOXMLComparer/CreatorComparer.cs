@@ -64,7 +64,7 @@ namespace OOXMLComparer
 
         private static bool CheckType<T>(OpenXmlElement a, OpenXmlElement b) where T :OpenXmlElement 
         {
-            return (a != null && a.GetType() == typeof(T)) || (b != null && b.GetType() == typeof(T));
+            return (a?.GetType() == typeof(T)) || (b?.GetType() == typeof(T));
         }
     }
 }
