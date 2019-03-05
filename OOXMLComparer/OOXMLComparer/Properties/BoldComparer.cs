@@ -4,7 +4,7 @@ namespace OOXMLComparer.Properties
 {
     public class BoldComparer : OnOffComparer
     {
-        public BoldComparer(OnOffType a, OnOffType b) : base(a, b)
+        public BoldComparer(Bold a, Bold b) : base(a, b)
         {
         }
     }

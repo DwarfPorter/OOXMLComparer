@@ -4,7 +4,7 @@ namespace OOXMLComparer.Properties
 {
     public class ItalicComparer : OnOffComparer
     {
-        public ItalicComparer(OnOffType a, OnOffType b) : base(a, b)
+        public ItalicComparer(Italic a, Italic b) : base(a, b)
         {
         }
     }

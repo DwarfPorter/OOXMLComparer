@@ -18,7 +18,6 @@ namespace OOXMLComparer
 
     public class OpenXmlElementComparer : OpenXmlElementComparer<OpenXmlElement>
     {
-        public OpenXmlElementComparer() : base(null, null) { }
         public OpenXmlElementComparer(OpenXmlElement a, OpenXmlElement b) : base(a, b)
         {
         }

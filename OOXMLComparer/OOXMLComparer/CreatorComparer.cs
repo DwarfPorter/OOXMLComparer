@@ -3,68 +3,52 @@ using DocumentFormat.OpenXml.Drawing;
 using DocumentFormat.OpenXml.Wordprocessing;
 using OOXMLComparer.Drawing;
 using OOXMLComparer.Properties;
+using System;
+using System.Collections.Concurrent;
+using System.Linq;
+using System.Reflection;
 
 namespace OOXMLComparer
 {
     public class CreatorComparer
     {
+        private static ConcurrentDictionary<Type, ConstructorInfo> cacheTypes = new ConcurrentDictionary<Type, ConstructorInfo>();
+
         public IOpenXmlElementComparer Create(OpenXmlElement a, OpenXmlElement b)
         {
-            if (CheckType<DocumentFormat.OpenXml.Wordprocessing.Text>(a, b))
+            Type type = GetType(a, b);
+            ConstructorInfo comparerConstructor = null;
+            if (!cacheTypes.TryGetValue(type, out comparerConstructor))
             {
-                return new TextComparer((DocumentFormat.OpenXml.Wordprocessing.Text) a, (DocumentFormat.OpenXml.Wordprocessing.Text)b);
-            }
-            if (CheckType<DocumentFormat.OpenXml.Wordprocessing.Underline>(a, b))
-            {
-                return new UnderlineComparer((DocumentFormat.OpenXml.Wordprocessing.Underline)a, (DocumentFormat.OpenXml.Wordprocessing.Underline)b);
-            }
-            if(CheckType<DocumentFormat.OpenXml.Wordprocessing.RunProperties>(a, b))
-            {
-                return new RunPropertiesComparer((DocumentFormat.OpenXml.Wordprocessing.RunProperties)a, (DocumentFormat.OpenXml.Wordprocessing.RunProperties)b);
-            }
-            if(CheckType<RunFonts>(a, b))
-            {
-                return new RunFontsComparer((RunFonts)a, (RunFonts)b);
-            }
-            if(CheckType<Italic>(a, b))
-            {
-                return new ItalicComparer((Italic)a, (Italic)b);
-            }
-            if (CheckType<FontSize>(a, b))
-            {
-                return new FontSizeComparer((FontSize)a, (FontSize)b);
-            }
-            if (CheckType<Border>(a, b))
-            {
-                return new BorderComparer((Border)a, (Border)b);
-            }
-            if (CheckType<Bold>(a, b))
-            {
-                return new BoldComparer((Bold)a, (Bold)b);
-            }
-            if (CheckType<Extents>(a, b))
-            {
-                return new ExtentsComparer((Extents)a, (Extents)b);
-            }
-            if (CheckType<Offset>(a, b))
-            {
-                return new OffsetComparer((Offset)a, (Offset)b);
-            }
-            if (CheckType<PresetGeometry>(a, b))
-            {
-                return new PresetGeometryComparer((PresetGeometry)a, (PresetGeometry)b);
-            }
-            if (CheckType<Transform2D>(a, b))
-            {
-                return new Transform2DComparer((Transform2D)a, (Transform2D)b);
+                foreach(Type classType in System.Reflection.Assembly.GetExecutingAssembly().GetTypes().Where(t => t.GetInterfaces().Contains(typeof(IOpenXmlElementComparer))))
+                {
+                    var constructor = classType.GetConstructors().Where(c => c.GetParameters().Count(p => p.ParameterType == type) == 2).FirstOrDefault();
+                    if (constructor != null)
+                    {
+                        comparerConstructor = constructor;
+                        cacheTypes.TryAdd(type, constructor);
+                        break;
+                    }
+                }
+                if (comparerConstructor == null)
+                {
+                    comparerConstructor = typeof(OpenXmlElementComparer).GetConstructors().First();
+                }
             }
 
-            return new OpenXmlElementComparer(a, b);
+            var answer = comparerConstructor.Invoke(new object[] { a, b });
+            IOpenXmlElementComparer result = answer as IOpenXmlElementComparer;
+            return result;
         }
 
         private static bool CheckType<T>(OpenXmlElement a, OpenXmlElement b) where T :OpenXmlElement 
         {
             return (a?.GetType() == typeof(T)) || (b?.GetType() == typeof(T));
+        }
+
+        private static Type GetType(OpenXmlElement a, OpenXmlElement b)
+        {
+            return a != null ? a.GetType() : b.GetType();
         }
     }
 }
