@@ -11,8 +11,8 @@ namespace OOXMLComparer.Test
         {
             var a = new Bold { Val = true };
             var b = new Bold { Val = true };
-            var boldComparer = new BoldComparer();
-            Assert.IsTrue(boldComparer.Compare(a, b));
+            var boldComparer = new BoldComparer(a, b);
+            Assert.IsTrue(boldComparer.Compare());
         }
 
         [Test]
@@ -20,8 +20,8 @@ namespace OOXMLComparer.Test
         {
             var a = new Bold { Val = true };
             var b = new Bold { Val = false };
-            var boldComparer = new BoldComparer();
-            Assert.IsFalse(boldComparer.Compare(a, b));
+            var boldComparer = new BoldComparer(a, b);
+            Assert.IsFalse(boldComparer.Compare());
         }
 
         [Test]
@@ -29,8 +29,8 @@ namespace OOXMLComparer.Test
         {
             var a = new Bold { Val = true };
             var b = default(Bold);
-            var boldComparer = new BoldComparer();
-            Assert.IsFalse(boldComparer.Compare(a, b));
+            var boldComparer = new BoldComparer(a, b);
+            Assert.IsFalse(boldComparer.Compare());
         }
 
         [Test]
@@ -38,9 +38,10 @@ namespace OOXMLComparer.Test
         {
             var a = new Bold { Val = true };
             Bold b = null;
-            var boldComparer = new BoldComparer();
-            Assert.IsFalse(boldComparer.Compare(a, b));
-            Assert.IsFalse(boldComparer.Compare(b, a));
+            var boldComparer = new BoldComparer(a, b);
+            Assert.IsFalse(boldComparer.Compare());
+            boldComparer = new BoldComparer(b, a);
+            Assert.IsFalse(boldComparer.Compare());
         }
 
         [Test]
@@ -48,10 +49,12 @@ namespace OOXMLComparer.Test
         {
             var a = new Bold { Val = false };
             Bold b = null;
-            var boldComparer = new BoldComparer();
-            Assert.IsTrue(boldComparer.Compare(a, b));
-            Assert.IsTrue(boldComparer.Compare(b, a));
-            Assert.IsTrue(boldComparer.Compare(null, null));
+            var boldComparer = new BoldComparer(a, b);
+            Assert.IsTrue(boldComparer.Compare());
+            boldComparer = new BoldComparer(b, a);
+            Assert.IsTrue(boldComparer.Compare());
+            boldComparer = new BoldComparer(null, null);
+            Assert.IsTrue(boldComparer.Compare());
         }
     }
 }

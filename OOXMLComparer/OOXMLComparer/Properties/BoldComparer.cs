@@ -2,11 +2,10 @@
 
 namespace OOXMLComparer.Properties
 {
-    public class BoldComparer : OnOffComparer, IOpenXmlElementComparer<Bold>
+    public class BoldComparer : OnOffComparer
     {
-        public bool Compare(Bold a, Bold b)
+        public BoldComparer(OnOffType a, OnOffType b) : base(a, b)
         {
-            return base.Compare((OnOffType)a, (OnOffType)b);
         }
     }
 }

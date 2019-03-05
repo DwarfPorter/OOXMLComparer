@@ -2,9 +2,13 @@
 
 namespace OOXMLComparer.Properties
 {
-    public class BorderComparer : IOpenXmlElementComparer<Border>
+    public class BorderComparer : OpenXmlElementComparer<Border>
     {
-        public bool Compare(Border a, Border b)
+        public BorderComparer(Border a, Border b) : base(a, b)
+        {
+        }
+
+        public override bool Compare()
         {
             if (a == null && b == null)
             {

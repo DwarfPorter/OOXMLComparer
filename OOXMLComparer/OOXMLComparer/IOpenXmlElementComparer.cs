@@ -5,8 +5,8 @@ using System.Text;
 
 namespace OOXMLComparer
 {
-    public interface IOpenXmlElementComparer<T> where T: OpenXmlElement
+    public interface IOpenXmlElementComparer
     {
-        bool Compare(T a, T b);
+        bool Compare();
     }
 }

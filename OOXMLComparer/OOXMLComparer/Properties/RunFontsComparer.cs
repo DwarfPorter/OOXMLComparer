@@ -2,19 +2,19 @@
 
 namespace OOXMLComparer.Properties
 {
-    public class RunFontsComparer : IOpenXmlElementComparer<RunFonts>
+    public class RunFontsComparer : OpenXmlElementComparer<RunFonts>
     {
-        public bool Compare(RunFonts a, RunFonts b)
+        public RunFontsComparer(RunFonts a, RunFonts b) : base(a, b)
+        {
+        }
+
+        public override bool Compare()
         {
             if (a == null && b == null)
             {
                 return true;
             }
-            if (a == null && b != null)
-            {
-                return false;
-            }
-            if (a != null && b == null)
+            if (a == null || b == null)
             {
                 return false;
             }

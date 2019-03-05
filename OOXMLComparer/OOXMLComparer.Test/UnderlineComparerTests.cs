@@ -11,27 +11,26 @@ namespace OOXMLComparer.Test
         {
             var a = new Underline { Val = UnderlineValues.Dash };
             var b = new Underline { Val = UnderlineValues.Dash };
-            var underlineComparer = new UnderlineComparer();
-            Assert.IsTrue(underlineComparer.Compare(a, b));
+            var underlineComparer = new UnderlineComparer(a, b);
+            Assert.IsTrue(underlineComparer.Compare());
         }
 
         [Test]
         public void UnderlineComparerNullTest()
         {
             var a = new Underline { Val = UnderlineValues.None };
-            var underlineComparer = new UnderlineComparer();
-            Assert.IsTrue(underlineComparer.Compare(a, null));
-            Assert.IsTrue(underlineComparer.Compare(null, a));
-            Assert.IsTrue(underlineComparer.Compare(null, null));
+            var underlineComparer = new UnderlineComparer(a, null);
+            Assert.IsTrue(underlineComparer.Compare());
+            Assert.IsTrue(new UnderlineComparer(null, a).Compare());
+            Assert.IsTrue(new UnderlineComparer(null, null).Compare());
         }
 
         [Test]
         public void UnderlineComparerNullWrongTest()
         {
             var a = new Underline { Val = UnderlineValues.DashLong };
-            var underlineComparer = new UnderlineComparer();
-            Assert.IsFalse(underlineComparer.Compare(a, null));
-            Assert.IsFalse(underlineComparer.Compare(null, a));
+            Assert.IsFalse(new UnderlineComparer(a, null).Compare());
+            Assert.IsFalse(new UnderlineComparer(null, a).Compare());
         }
 
         [Test]
@@ -39,8 +38,8 @@ namespace OOXMLComparer.Test
         {
             var a = new Underline { Val = UnderlineValues.Dash };
             var b = new Underline { Val = UnderlineValues.Dotted };
-            var underlineComparer = new UnderlineComparer();
-            Assert.IsFalse(underlineComparer.Compare(a, b));
+            var underlineComparer = new UnderlineComparer(a, b);
+            Assert.IsFalse(underlineComparer.Compare());
         }
 
     }

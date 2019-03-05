@@ -11,8 +11,8 @@ namespace OOXMLComparer.Test
         {
             var a = new Border { Val = BorderValues.Single };
             var b = new Border { Val = BorderValues.Single };
-            var borderComparer = new BorderComparer();
-            Assert.IsTrue(borderComparer.Compare(a, b));
+            var borderComparer = new BorderComparer(a, b);
+            Assert.IsTrue(borderComparer.Compare());
         }
 
         [Test]
@@ -20,8 +20,8 @@ namespace OOXMLComparer.Test
         {
             var a = new Border { Val = BorderValues.Single };
             var b = new Border { Val = BorderValues.Sombrero };
-            var BorderComparer = new BorderComparer();
-            Assert.IsFalse(BorderComparer.Compare(a, b));
+            var BorderComparer = new BorderComparer(a, b);
+            Assert.IsFalse(BorderComparer.Compare());
         }
 
         [Test]
@@ -29,21 +29,21 @@ namespace OOXMLComparer.Test
         {
             var a = new Border { Val = BorderValues.None };
             var a1 = new Border { Val = BorderValues.Nil };
-            var BorderComparer = new BorderComparer();
-            Assert.IsTrue(BorderComparer.Compare(a, null));
-            Assert.IsTrue(BorderComparer.Compare(null, a));
-            Assert.IsTrue(BorderComparer.Compare(a1, null));
-            Assert.IsTrue(BorderComparer.Compare(null, a1));
-            Assert.IsTrue(BorderComparer.Compare(null, null));
+            var BorderComparer = new BorderComparer(a, null);
+            Assert.IsTrue(BorderComparer.Compare());
+            Assert.IsTrue(new BorderComparer(null, a).Compare());
+            Assert.IsTrue(new BorderComparer(a1, null).Compare());
+            Assert.IsTrue(new BorderComparer(null, a1).Compare());
+            Assert.IsTrue(new BorderComparer(null, null).Compare());
         }
 
         [Test]
         public void BorderComparerNullWrongTest()
         {
             var a = new Border { Val = BorderValues.Single };
-            var BorderComparer = new BorderComparer();
-            Assert.IsFalse(BorderComparer.Compare(a, null));
-            Assert.IsFalse(BorderComparer.Compare(null, a));
+            var BorderComparer = new BorderComparer(a, null);
+            Assert.IsFalse(BorderComparer.Compare());
+            Assert.IsFalse(new BorderComparer(null, a).Compare());
         }
     }
 }

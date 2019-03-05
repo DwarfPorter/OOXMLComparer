@@ -2,9 +2,13 @@
 
 namespace OOXMLComparer.Properties
 {
-    public abstract class OnOffComparer : IOpenXmlElementComparer<OnOffType>
+    public abstract class OnOffComparer : OpenXmlElementComparer<OnOffType>
     {
-        public bool Compare(OnOffType a, OnOffType b)
+        protected OnOffComparer(OnOffType a, OnOffType b) : base(a, b)
+        {
+        }
+
+        public override bool Compare()
         {
             if (a == null && b == null)
             {

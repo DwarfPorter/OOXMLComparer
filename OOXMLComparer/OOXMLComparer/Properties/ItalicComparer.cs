@@ -2,11 +2,10 @@
 
 namespace OOXMLComparer.Properties
 {
-    public class ItalicComparer : OnOffComparer, IOpenXmlElementComparer<Italic>
+    public class ItalicComparer : OnOffComparer
     {
-        public bool Compare(Italic a, Italic b)
+        public ItalicComparer(OnOffType a, OnOffType b) : base(a, b)
         {
-            return base.Compare((OnOffType)a, (OnOffType)b);
         }
     }
 }

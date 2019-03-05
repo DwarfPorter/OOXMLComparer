@@ -3,10 +3,20 @@ using System;
 
 namespace OOXMLComparer
 {
-    public class TextComparer : IOpenXmlElementComparer<Text>
+    public class TextComparer : OpenXmlElementComparer<Text>
     {
-        public bool Compare(Text a, Text b)
+        public TextComparer(Text a, Text b) : base(a, b) { }
+
+        public override bool Compare()
         {
+            if (a == null && b == null)
+            {
+                return true;
+            }
+            if (a == null || b == null)
+            {
+                return false;
+            }
             return a.Text == b.Text;
         }
     }

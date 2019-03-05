@@ -11,8 +11,8 @@ namespace OOXMLComparer.Test
         {
             var a = new Italic { Val = true };
             var b = new Italic { Val = true };
-            var ItalicComparer = new ItalicComparer();
-            Assert.IsTrue(ItalicComparer.Compare(a, b));
+            var ItalicComparer = new ItalicComparer(a, b);
+            Assert.IsTrue(ItalicComparer.Compare());
         }
 
         [Test]
@@ -20,8 +20,8 @@ namespace OOXMLComparer.Test
         {
             var a = new Italic { Val = true };
             var b = new Italic { Val = false };
-            var ItalicComparer = new ItalicComparer();
-            Assert.IsFalse(ItalicComparer.Compare(a, b));
+            var ItalicComparer = new ItalicComparer(a, b);
+            Assert.IsFalse(ItalicComparer.Compare());
         }
 
         [Test]
@@ -29,9 +29,9 @@ namespace OOXMLComparer.Test
         {
             var a = new Italic { Val = true };
             Italic b = null;
-            var ItalicComparer = new ItalicComparer();
-            Assert.IsFalse(ItalicComparer.Compare(a, b));
-            Assert.IsFalse(ItalicComparer.Compare(b, a));
+            var ItalicComparer = new ItalicComparer(a, b);
+            Assert.IsFalse(ItalicComparer.Compare());
+            Assert.IsFalse(new ItalicComparer(b, a).Compare());
         }
 
         [Test]
@@ -39,10 +39,10 @@ namespace OOXMLComparer.Test
         {
             var a = new Italic { Val = false };
             Italic b = null;
-            var ItalicComparer = new ItalicComparer();
-            Assert.IsTrue(ItalicComparer.Compare(a, b));
-            Assert.IsTrue(ItalicComparer.Compare(b, a));
-            Assert.IsTrue(ItalicComparer.Compare(null, null));
+            var ItalicComparer = new ItalicComparer(a, b);
+            Assert.IsTrue(ItalicComparer.Compare());
+            Assert.IsTrue(new ItalicComparer(b, a).Compare());
+            Assert.IsTrue(new ItalicComparer(null, null).Compare());
         }
     }
 }

@@ -1,6 +1,8 @@
-﻿using DocumentFormat.OpenXml.Wordprocessing;
+﻿using DocumentFormat.OpenXml;
+using DocumentFormat.OpenXml.Wordprocessing;
 using NUnit.Framework;
 using OOXMLComparer.Properties;
+using System.Collections.Generic;
 
 namespace OOXMLComparer.Test
 {
@@ -11,8 +13,8 @@ namespace OOXMLComparer.Test
         {
             var a = new RunProperties();
             var b = new RunProperties();
-            var runPropertiesComparer = new RunPropertiesComparer();
-            Assert.IsTrue(runPropertiesComparer.Compare(a, b));
+            var runPropertiesComparer = new RunPropertiesComparer(a, b);
+            Assert.IsTrue(runPropertiesComparer.Compare());
         }
 
         [Test]
@@ -20,55 +22,63 @@ namespace OOXMLComparer.Test
         {
             var a = new RunProperties { Underline = new Underline{Val = UnderlineValues.DashLong}, Italic = new Italic{ Val = true } };
             var b = new RunProperties { Underline = new Underline{Val = UnderlineValues.DashLong}, Italic = new Italic{ Val = true }  };
-            var runPropertiesComparer = new RunPropertiesComparer();
-            Assert.IsTrue(runPropertiesComparer.Compare(a, b));
+            var runPropertiesComparer = new RunPropertiesComparer(a, b);
+            Assert.IsTrue(runPropertiesComparer.Compare());
 
             var a1 = new RunProperties (new List<OpenXmlElement> { new Underline{Val = UnderlineValues.DashLong}, new Bold {Val = true} });
             var b1 = new RunProperties (new List<OpenXmlElement> { new Underline{Val = UnderlineValues.DashLong}, new Bold {Val = true} });
-            Assert.IsTrue(runPropertiesComparer.Compare(a1, b1));
+            Assert.IsTrue(new RunPropertiesComparer(a1, b1).Compare());
 
             var a2 = new RunProperties { Underline = new Underline{Val = UnderlineValues.DashLong}, Italic = new Italic{ Val = false } };
             var b2 = new RunProperties { Underline = new Underline{Val = UnderlineValues.DashLong}  };
-            Assert.IsTrue(runPropertiesComparer.Compare(a2, b2));
+            Assert.IsTrue(new RunPropertiesComparer(a2, b2).Compare());
 
             var a3 = new RunProperties (new List<OpenXmlElement> { new Underline{Val = UnderlineValues.DashLong}, new Bold {Val = false} });
             var b3 = new RunProperties (new List<OpenXmlElement> { new Underline{Val = UnderlineValues.DashLong} });
-            Assert.IsTrue(runPropertiesComparer.Compare(a3, b3));
+            Assert.IsTrue(new RunPropertiesComparer(a3, b3).Compare());
 
         }
 
         [Test]
         public void RunPropertiesComparerNullTest()
         {
-            var a = new RunProperties ();
-            var runPropertiesComparer = new RunPropertiesComparer();
-            Assert.IsTrue(runPropertiesComparer.Compare(a, null));
-            Assert.IsTrue(runPropertiesComparer.Compare(null, null));
-            Assert.IsTrue(runPropertiesComparer.Compare(null, a));
+            Assert.IsTrue(new RunPropertiesComparer(null, null).Compare());
         }
 
+        [Test]
+        public void RunPropertiesComparerANullTest()
+        {
+            var a = new RunProperties();
+            Assert.IsTrue(new RunPropertiesComparer(null, a).Compare());
+        }
 
+        [Test]
+        public void RunPropertiesComparerBNullTest()
+        {
+            var a = new RunProperties();
+            var runPropertiesComparer = new RunPropertiesComparer(a, null);
+            Assert.IsTrue(runPropertiesComparer.Compare());
+        }
 
         [Test]
         public void RunPropertiesComparerWrongTest()
         {
             var a = new RunProperties { Underline = new Underline{Val = UnderlineValues.DashLong}, Italic = new Italic{ Val = true } };
             var b = new RunProperties { Underline = new Underline{Val = UnderlineValues.DashLong}, Italic = new Italic{ Val = false }  };
-            var runPropertiesComparer = new RunPropertiesComparer();
-            Assert.IsFalse(runPropertiesComparer.Compare(a, b));
+            var runPropertiesComparer = new RunPropertiesComparer(a, b);
+            Assert.IsFalse(runPropertiesComparer.Compare());
 
             var a1 = new RunProperties { Underline = new Underline{Val = UnderlineValues.DashLong}, Italic = new Italic{ Val = true } };
             var b1 = new RunProperties { Underline = new Underline{Val = UnderlineValues.DashLong}};
-            Assert.IsFalse(runPropertiesComparer.Compare(a1, b1));
+            Assert.IsFalse(new RunPropertiesComparer(a1, b1).Compare());
 
             var a2 = new RunProperties (new List<OpenXmlElement> { new Underline{Val = UnderlineValues.DashLong}, new Bold {Val = true} });
             var b2 = new RunProperties (new List<OpenXmlElement> { new Underline{Val = UnderlineValues.DashLong}, new Bold {Val = false} });
-            Assert.IsFalse(runPropertiesComparer.Compare(a2, b2));
+            Assert.IsFalse(new RunPropertiesComparer(a2, b2).Compare());
 
             var a3 = new RunProperties (new List<OpenXmlElement> { new Underline{Val = UnderlineValues.DashLong}, new Bold {Val = true} });
             var b3 = new RunProperties (new List<OpenXmlElement> { new Underline{Val = UnderlineValues.DashLong} });
-            Assert.IsFalse(runPropertiesComparer.Compare(a3, b3));
-
+            Assert.IsFalse(new RunPropertiesComparer(a3, b3).Compare());
         }
     }
 }

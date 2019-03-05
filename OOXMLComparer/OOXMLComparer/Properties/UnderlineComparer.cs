@@ -2,9 +2,13 @@
 
 namespace OOXMLComparer.Properties
 {
-    public class UnderlineComparer : IOpenXmlElementComparer<Underline>
+    public class UnderlineComparer : OpenXmlElementComparer<Underline>
     {
-        public bool Compare(Underline a, Underline b)
+        public UnderlineComparer(Underline a, Underline b) : base(a, b)
+        {
+        }
+
+        public override bool Compare()
         {
             if (a == null && b == null)
             {

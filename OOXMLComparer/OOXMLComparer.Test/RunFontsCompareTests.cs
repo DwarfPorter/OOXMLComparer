@@ -11,9 +11,9 @@ namespace OOXMLComparer.Test
         {
             var a = new RunFonts() { Ascii = "Arial", HighAnsi = "Calibri" };
             var b = new RunFonts() { Ascii = "Arial", HighAnsi = "Calibri" };
-            var fontComparer = new RunFontsComparer();
-            Assert.IsTrue(fontComparer.Compare(a, b));
-            Assert.IsTrue(fontComparer.Compare(null, null));
+            var fontComparer = new RunFontsComparer(a, b);
+            Assert.IsTrue(fontComparer.Compare());
+            Assert.IsTrue(new RunFontsComparer(null, null).Compare());
         }
 
         [Test]
@@ -21,10 +21,10 @@ namespace OOXMLComparer.Test
         {
             var a = new RunFonts() { Ascii = "Arial" };
             var b = new RunFonts() { Ascii = "Arial", HighAnsi = "Calibri" };
-            var fontComparer = new RunFontsComparer();
-            Assert.IsFalse(fontComparer.Compare(a, b));
-            Assert.IsFalse(fontComparer.Compare(a, null));
-            Assert.IsFalse(fontComparer.Compare(null, b));
+            var fontComparer = new RunFontsComparer(a, b);
+            Assert.IsFalse(fontComparer.Compare());
+            Assert.IsFalse(new RunFontsComparer(a, null).Compare());
+            Assert.IsFalse(new RunFontsComparer(null, b).Compare());
         }
 
     }

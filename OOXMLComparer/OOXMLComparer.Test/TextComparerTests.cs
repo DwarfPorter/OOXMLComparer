@@ -11,8 +11,8 @@ namespace OOXMLComparer.Test
         {
             var a = new Text("Test");
             var b = new Text("Test");
-            var textComparer = new TextComparer();
-            Assert.IsTrue(textComparer.Compare(a, b));
+            var textComparer = new TextComparer(a, b);
+            Assert.IsTrue(textComparer.Compare());
         }
 
         [Test]
@@ -20,8 +20,9 @@ namespace OOXMLComparer.Test
         {
             var a = new Text("Test");
             var b = new Text("Probe");
-            var textComparer = new TextComparer();
-            Assert.IsFalse(textComparer.Compare(a, b));
+            var textComparer = new TextComparer(a, b);
+            Assert.IsFalse(textComparer.Compare());
+            Assert.IsFalse(new TextComparer(a, null).Compare());
         }
     }
 }

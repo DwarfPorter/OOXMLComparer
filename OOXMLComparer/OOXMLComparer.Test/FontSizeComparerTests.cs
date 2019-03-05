@@ -11,9 +11,9 @@ namespace OOXMLComparer.Test
         {
             var a = new FontSize { Val = "5" };
             var b = new FontSize { Val = "5" };
-            var fontSizeComparer = new FontSizeComparer();
-            Assert.IsTrue(fontSizeComparer.Compare(a, b));
-            Assert.IsTrue(fontSizeComparer.Compare(null, null));
+            var fontSizeComparer = new FontSizeComparer(a, b);
+            Assert.IsTrue(fontSizeComparer.Compare());
+            Assert.IsTrue(new FontSizeComparer(null, null).Compare());
         }
 
         [Test]
@@ -21,10 +21,10 @@ namespace OOXMLComparer.Test
         {
             var a = new FontSize { Val = "5" };
             var b = new FontSize { Val = "6" };
-            var fontSizeComparer = new FontSizeComparer();
-            Assert.IsFalse(fontSizeComparer.Compare(a, b));
-            Assert.IsFalse(fontSizeComparer.Compare(a, null));
-            Assert.IsFalse(fontSizeComparer.Compare(null, b));
+            var fontSizeComparer = new FontSizeComparer(a, b);
+            Assert.IsFalse(fontSizeComparer.Compare());
+            Assert.IsFalse(new FontSizeComparer(a, null).Compare());
+            Assert.IsFalse(new FontSizeComparer(null, b).Compare());
         }
     }
 }

@@ -2,9 +2,13 @@
 
 namespace OOXMLComparer.Properties
 {
-    public class FontSizeComparer : IOpenXmlElementComparer<FontSize>
+    public class FontSizeComparer : OpenXmlElementComparer<FontSize>
     {
-        public bool Compare(FontSize a, FontSize b)
+        public FontSizeComparer(FontSize a, FontSize b) : base(a, b)
+        {
+        }
+
+        public override bool Compare()
         {
             if (a == null && b == null)
             {
