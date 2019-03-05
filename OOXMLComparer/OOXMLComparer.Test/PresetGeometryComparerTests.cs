@@ -41,6 +41,5 @@ namespace OOXMLComparer.Test
             Assert.IsFalse(new PresetGeometryComparer(null, a).Compare());
             Assert.IsTrue(new PresetGeometryComparer(null, null).Compare());
         }
-
     }
 }

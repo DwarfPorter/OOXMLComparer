@@ -26,7 +26,11 @@ namespace OOXMLComparer.Drawing
             {
                 return false;
             }
-            return (Equals(a.X, b.X) || (a.X == 0 && b.X == null) || (a.X == null && b.X == 0)) && (Equals(a.Y, b.Y) || (a.Y == 0 && b.Y == null) || (a.Y == null && b.Y == 0));
+            var ax = a.X ?? 0;
+            var ay = a.Y ?? 0;
+            var bx = b.X ?? 0;
+            var by = b.Y ?? 0;
+            return Equals(ax, bx) && Equals(ay, by);
         }
     }
 }
