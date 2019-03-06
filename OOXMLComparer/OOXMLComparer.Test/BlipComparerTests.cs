@@ -61,8 +61,8 @@ namespace OOXMLComparer.Test
             word2 = CreateWordDocument("doc2", ImagePartType.Png, data1Png, ImagePartType.Png, data2Png, ImagePartType.Bmp, data1Bmp);
             word3 = CreateWordDocument("doc3", ImagePartType.Bmp, data1Bmp, ImagePartType.Png, data1Png, ImagePartType.Png, data2Png);
             doc1 = word1.MainDocumentPart;
-            doc2 = word1.MainDocumentPart;
-            doc3 = word1.MainDocumentPart;
+            doc2 = word2.MainDocumentPart;
+            doc3 = word3.MainDocumentPart;
         }
 
         [TearDown]
