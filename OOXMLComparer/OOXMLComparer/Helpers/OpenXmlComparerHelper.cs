@@ -57,11 +57,7 @@ namespace OOXMLComparer.Helpers
             {
                 return true;
             }
-            if (a == null && b != null)
-            {
-                return false;
-            }
-            if (a != null && b == null)
+            if (a == null || b == null)
             {
                 return false;
             }
