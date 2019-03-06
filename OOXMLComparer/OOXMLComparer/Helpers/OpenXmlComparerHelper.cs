@@ -44,7 +44,7 @@ namespace OOXMLComparer.Helpers
             }
             if (a == null || b == null)
             {
-                return true;
+                return false;
             }
             var childrenA = a.ChildElements;
             var childrenB = b.ChildElements;
@@ -54,6 +54,27 @@ namespace OOXMLComparer.Helpers
         public static bool? CompareNullElements(this OpenXmlElement a, OpenXmlElement b)
         {
             if (a == null && b == null)
+            {
+                return true;
+            }
+            if (a == null || b == null)
+            {
+                return false;
+            }
+            return null;
+        }
+
+        public static bool? CompareNullElements<T>(this T a, T b, Func<T, bool> checkNull) where T : OpenXmlElement
+        {
+            if (a == null && b == null)
+            {
+                return true;
+            }
+            if (a == null && checkNull(b))
+            {
+                return true;
+            }
+            if (b == null && checkNull(a))
             {
                 return true;
             }

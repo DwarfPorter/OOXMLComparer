@@ -1,4 +1,5 @@
 ﻿using DocumentFormat.OpenXml.Wordprocessing;
+using OOXMLComparer.Helpers;
 
 namespace OOXMLComparer.Properties
 {
@@ -10,23 +11,7 @@ namespace OOXMLComparer.Properties
 
         public override bool Compare()
         {
-            if (a == null && b == null)
-            {
-                return true;
-            }
-            if (a == null && b.Val == UnderlineValues.None)
-            {
-                return true;
-            }
-            if (b == null && a.Val == UnderlineValues.None)
-            {
-                return true;
-            }
-            if (a == null || b == null)
-            {
-                return false;
-            }
-            return Equals(a.Val, b.Val);
+            return a.CompareNullElements(b, t => t.Val == UnderlineValues.None) ?? Equals(a.Val, b.Val);
         }
     }
 }

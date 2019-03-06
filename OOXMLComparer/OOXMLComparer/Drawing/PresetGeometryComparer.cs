@@ -1,4 +1,5 @@
 ﻿using DocumentFormat.OpenXml.Drawing;
+using OOXMLComparer.Helpers;
 
 namespace OOXMLComparer.Drawing
 {
@@ -9,23 +10,7 @@ namespace OOXMLComparer.Drawing
         }
         public override bool Compare()
         {
-            if (a == null && b == null)
-            {
-                return true;
-            }
-            if (a == null && b.Preset == null && b.AdjustValueList == null)
-            {
-                return true;
-            }
-            if (b == null && a.Preset == null && a.AdjustValueList == null)
-            {
-                return true;
-            }
-            if (a == null || b == null)
-            {
-                return false;
-            }
-            return Equals(a.Preset, b.Preset) && ((a.AdjustValueList == null && b.AdjustValueList == null)||(a.AdjustValueList != null && b.AdjustValueList != null));
+            return a.CompareNullElements(b, t => t.Preset == null && t.AdjustValueList == null) ?? (Equals(a.Preset, b.Preset) && ((a.AdjustValueList == null && b.AdjustValueList == null)||(a.AdjustValueList != null && b.AdjustValueList != null)));
         }
     }
 }
