@@ -1,5 +1,6 @@
 ﻿using DocumentFormat.OpenXml;
 using System;
+using System.IO;
 using System.Linq;
 
 namespace OOXMLComparer.Helpers
@@ -83,6 +84,15 @@ namespace OOXMLComparer.Helpers
                 return false;
             }
             return null;
+        }
+
+        public static byte[] GetArrayFromStream(Stream stream)
+        {
+            using (var mem = new MemoryStream())
+            {
+                stream.CopyTo(mem);
+                return mem.ToArray();
+            }
         }
     }
 }
