@@ -86,7 +86,7 @@ namespace OOXMLComparer.Helpers
             return null;
         }
 
-        public static byte[] GetArrayFromStream(Stream stream)
+        public static byte[] GetArrayFromStream(this Stream stream)
         {
             using (var mem = new MemoryStream())
             {
