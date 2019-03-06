@@ -51,5 +51,21 @@ namespace OOXMLComparer.Helpers
             return CompareChildren2(childrenA, childrenB);
         }
 
+        public static bool? CompareNullElements(this OpenXmlElement a, OpenXmlElement b)
+        {
+            if (a == null && b == null)
+            {
+                return true;
+            }
+            if (a == null && b != null)
+            {
+                return false;
+            }
+            if (a != null && b == null)
+            {
+                return false;
+            }
+            return null;
+        }
     }
 }
