@@ -25,6 +25,5 @@ namespace OOXMLComparer.Test
             var b = new Transform2D(new Offset { X = 2L }, new Extents { Cx = 444 });
             Assert.IsFalse(new Transform2DComparer(a, b).Compare());
         }
-
     }
 }
