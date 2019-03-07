@@ -103,6 +103,7 @@ namespace OOXMLComparer.Test
             var a = doc1.FooterParts.First().Footer.Descendants<Blip>().First();
             var b = doc2.FooterParts.First().Footer.Descendants<Blip>().First();
             Assert.IsTrue(new BlipComparer(a, b).Compare());
+            Assert.IsFalse(true);
         }
 
         [Test]
