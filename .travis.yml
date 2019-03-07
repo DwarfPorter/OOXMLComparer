@@ -1,7 +1,9 @@
 language: csharp
 mono: none
+sudo: required
+dist: xenial
 dotnet: 2.2
-solution: OOXMLComparer/OOXMLComparer.sln
 script:
-  - dotnet restore
-  - dotnet test
+    - dotnet restore OOXMLComparer
+    - dotnet build OOXMLComparer
+    - dotnet test OOXMLComparer
