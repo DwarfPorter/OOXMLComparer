@@ -33,20 +33,5 @@ namespace OOXMLComparer.Test
             var b = new NonVisualDrawingProperties();
             Assert.IsFalse(new NonVisualDrawingPropertiesComparer(a, b).Compare());
         }
-
-        public override bool Equals(object obj)
-        {
-            return base.Equals(obj);
-        }
-
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
-        }
-
-        public override string ToString()
-        {
-            return base.ToString();
-        }
     }
 }

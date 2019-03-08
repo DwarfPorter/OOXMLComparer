@@ -108,5 +108,15 @@ namespace OOXMLComparer.Helpers
         {
             return Equals(ToBool(a), ToBool(b));
         }
+
+        public static long ToInt64(this Int64Value a)
+        {
+            if (a == null)
+            {
+                return 0;
+            }
+            return Int64Value.ToInt64(a);
+        }
+
     }
 }

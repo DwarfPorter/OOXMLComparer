@@ -26,6 +26,5 @@ namespace OOXMLComparer.Test
             Assert.IsFalse(new RunFontsComparer(a, null).Compare());
             Assert.IsFalse(new RunFontsComparer(null, b).Compare());
         }
-
     }
 }
