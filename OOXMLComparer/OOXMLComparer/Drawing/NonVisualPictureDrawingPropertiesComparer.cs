@@ -1,11 +1,11 @@
-﻿using DocumentFormat.OpenXml.Drawing;
+﻿using DocumentFormat.OpenXml.Drawing.Pictures;
 using OOXMLComparer.Helpers;
 
 namespace OOXMLComparer.Drawing
 {
-    public class NonVisualPictureDrawingPropertiesComparer : OpenXmlElementComparer<NonVisualPictureDrawingProperties>
+    public class NonVisualPictureDrawingPropertiesComparer : OpenXmlElementComparer<DocumentFormat.OpenXml.Drawing.Pictures.NonVisualPictureDrawingProperties>
     {
-        public NonVisualPictureDrawingPropertiesComparer(NonVisualPictureDrawingProperties a, NonVisualPictureDrawingProperties b) : base(a, b)
+        public NonVisualPictureDrawingPropertiesComparer(DocumentFormat.OpenXml.Drawing.Pictures.NonVisualPictureDrawingProperties a, DocumentFormat.OpenXml.Drawing.Pictures.NonVisualPictureDrawingProperties b) : base(a, b)
         {
         }
 
