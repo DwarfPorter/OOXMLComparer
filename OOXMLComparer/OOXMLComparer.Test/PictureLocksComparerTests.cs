@@ -18,8 +18,8 @@ namespace OOXMLComparer.Test
         public void PictureLocksComparerNullTest()
         {
             var a = new PictureLocks();
-            Assert.IsTrue(new PictureLocksComparer(a, null).Compare());
-            Assert.IsTrue(new PictureLocksComparer(null, a).Compare());
+            Assert.IsFalse(new PictureLocksComparer(a, null).Compare());
+            Assert.IsFalse(new PictureLocksComparer(null, a).Compare());
             Assert.IsTrue(new PictureLocksComparer(null, null).Compare());
             a.NoRotation = true;
             Assert.IsFalse(new PictureLocksComparer(a, null).Compare());
