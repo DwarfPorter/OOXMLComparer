@@ -135,14 +135,4 @@ namespace OOXMLComparer.Test
             Assert.IsFalse(new PictureLocksComparer(a, b).Compare());
         }
     }
-    public class NonVisualPictureDrawingPropertiesComparerTests
-    {
-        [Test]
-        public void NonVisualPictureDrawingPropertiesComparerTest()
-        {
-            var a = new NonVisualPictureDrawingProperties();
-            var b = new NonVisualPictureDrawingProperties();
-            Assert.IsTrue(new NonVisualPictureDrawingPropertiesComparer(a, b).Compare());
-        }
-    }
 }

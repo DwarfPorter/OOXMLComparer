@@ -36,15 +36,4 @@ namespace OOXMLComparer.Drawing
                 && OpenXmlComparerHelper.EqualBool(a.NoSelection, b.NoSelection);
         }
     }
-    public class NonVisualPictureDrawingPropertiesComparer : OpenXmlElementComparer<NonVisualPictureDrawingProperties>
-    {
-        public NonVisualPictureDrawingPropertiesComparer(NonVisualPictureDrawingProperties a, NonVisualPictureDrawingProperties b) : base(a, b)
-        {
-        }
-
-        public override bool Compare()
-        {
-            return true;
-        }
-    }
 }
