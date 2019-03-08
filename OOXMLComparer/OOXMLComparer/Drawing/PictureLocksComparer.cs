@@ -12,17 +12,17 @@ namespace OOXMLComparer.Drawing
 
         public override bool Compare()
         {
-            return a.CompareNullElements(b, t => !t.NoAdjustHandles
-                    && !t.NoChangeArrowheads
-                    && !t.NoChangeAspect
-                    && !t.NoChangeShapeType
-                    && !t.NoCrop
-                    && !t.NoEditPoints
-                    && !t.NoGrouping
-                    && !t.NoMove
-                    && !t.NoResize
-                    && !t.NoRotation
-                    && !t.NoSelection)
+            return a.CompareNullElements(b, t => !ToBool(t.NoAdjustHandles)
+                    && !ToBool(t.NoChangeArrowheads)
+                    && !ToBool(t.NoChangeAspect)
+                    && !ToBool(t.NoChangeShapeType)
+                    && !ToBool(t.NoCrop)
+                    && !ToBool(t.NoEditPoints)
+                    && !ToBool(t.NoGrouping)
+                    && !ToBool(t.NoMove)
+                    && !ToBool(t.NoResize)
+                    && !ToBool(t.NoRotation)
+                    && !ToBool(t.NoSelection))
                 ?? EqualBool(a.NoAdjustHandles, b.NoAdjustHandles)
                 && EqualBool(a.NoChangeArrowheads, b.NoChangeArrowheads)
                 && EqualBool(a.NoChangeAspect, b.NoChangeAspect)
