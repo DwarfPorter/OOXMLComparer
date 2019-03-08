@@ -11,17 +11,8 @@ namespace OOXMLComparer.Drawing
 
         public override bool Compare()
         {
-            var answer = a.CompareNullElements(b, t => (t.Cx == null || t.Cx == 0L) && (t.Cy == null || t.Cy == 0L));
-            if (answer != null)
-            {
-                return answer.Value;
-            }
-
-            var aCx = a.Cx ?? 0;
-            var aCy = a.Cy ?? 0;
-            var bCx = b.Cx ?? 0;
-            var bCy = b.Cy ?? 0;
-            return Equals(aCx, bCx) && Equals(aCy, bCy);
+            return a.CompareNullElements(b, t => t.Cx.ToInt64() == 0L && t.Cy.ToInt64() == 0L)
+                ?? a.Cx.ToInt64() == b.Cx.ToInt64() && a.Cy.ToInt64() == b.Cy.ToInt64();
         }
     }
 }
