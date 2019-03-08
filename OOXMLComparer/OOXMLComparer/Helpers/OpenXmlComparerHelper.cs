@@ -65,17 +65,17 @@ namespace OOXMLComparer.Helpers
             return null;
         }
 
-        public static bool? CompareNullElements<T>(this T a, T b, Func<T, bool> checkNull) where T : OpenXmlElement
+        public static bool? CompareNullElements<T>(this T a, T b, Func<T, bool> checkNullorDefault) where T : OpenXmlElement
         {
             if (a == null && b == null)
             {
                 return true;
             }
-            if (a == null && checkNull(b))
+            if (a == null && checkNullorDefault(b))
             {
                 return true;
             }
-            if (b == null && checkNull(a))
+            if (b == null && checkNullorDefault(a))
             {
                 return true;
             }

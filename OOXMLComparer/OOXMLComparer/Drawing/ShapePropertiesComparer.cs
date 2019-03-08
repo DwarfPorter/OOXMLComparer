@@ -1,5 +1,4 @@
-﻿using DocumentFormat.OpenXml.Drawing;
-using OOXMLComparer.Helpers;
+﻿using OOXMLComparer.Helpers;
 
 namespace OOXMLComparer.Drawing
 {
@@ -12,17 +11,6 @@ namespace OOXMLComparer.Drawing
         public override bool Compare()
         {
             return a.CompareNullElements(b) ?? (Equals(a.BlackWhiteMode, b.BlackWhiteMode) && a.CompareChildren2(b));
-        }
-    }
-    public class PictureLocksComparer : OpenXmlElementComparer<PictureLocks>
-    {
-        public PictureLocksComparer(PictureLocks a, PictureLocks b) : base(a, b)
-        {
-        }
-
-        public override bool Compare()
-        {
-            return true;
         }
     }
 }
