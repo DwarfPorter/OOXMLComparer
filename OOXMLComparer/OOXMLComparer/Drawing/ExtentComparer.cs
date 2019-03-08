@@ -1,11 +1,11 @@
-﻿using DocumentFormat.OpenXml.Drawing;
+﻿using DocumentFormat.OpenXml.Drawing.Wordprocessing;
 using OOXMLComparer.Helpers;
 
 namespace OOXMLComparer.Drawing
 {
-    public class ExtentsComparer : OpenXmlElementComparer<Extents>
+    public class ExtentComparer : OpenXmlElementComparer<Extent>
     {
-        public ExtentsComparer(Extents a, Extents b) : base(a, b)
+        public ExtentComparer(Extent a, Extent b) : base(a, b)
         {
         }
 
@@ -14,6 +14,6 @@ namespace OOXMLComparer.Drawing
             return a.CompareNullElements(b, t => t.Cx.ToInt64() == 0L && t.Cy.ToInt64() == 0L)
                 ?? a.Cx.ToInt64() == b.Cx.ToInt64() && a.Cy.ToInt64() == b.Cy.ToInt64();
         }
-
     }
+    
 }

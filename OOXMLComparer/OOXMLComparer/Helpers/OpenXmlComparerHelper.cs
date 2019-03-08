@@ -118,5 +118,13 @@ namespace OOXMLComparer.Helpers
             return Int64Value.ToInt64(a);
         }
 
+        public static uint ToUInt32(this UInt32Value a)
+        {
+            if (a == null)
+            {
+                return 0;
+            }
+            return UInt32Value.ToUInt32(a);
+        }
     }
 }
