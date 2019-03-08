@@ -1,8 +1,4 @@
 ﻿using DocumentFormat.OpenXml;
-using DocumentFormat.OpenXml.Drawing;
-using DocumentFormat.OpenXml.Wordprocessing;
-using OOXMLComparer.Drawing;
-using OOXMLComparer.Properties;
 using System;
 using System.Collections.Concurrent;
 using System.Linq;

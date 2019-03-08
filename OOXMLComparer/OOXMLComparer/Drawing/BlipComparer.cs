@@ -1,10 +1,8 @@
-﻿using DocumentFormat.OpenXml;
-using DocumentFormat.OpenXml.Drawing;
+﻿using DocumentFormat.OpenXml.Drawing;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
 using OOXMLComparer.Helpers;
 using System;
-using System.Collections;
 using System.Linq;
 
 namespace OOXMLComparer.Drawing

@@ -94,5 +94,19 @@ namespace OOXMLComparer.Helpers
                 return mem.ToArray();
             }
         }
+
+        public static bool ToBool(this BooleanValue a)
+        {
+            if (a == null)
+            {
+                return false;
+            }
+            return BooleanValue.ToBoolean(a);
+        }
+
+        public static bool EqualBool(this BooleanValue a, BooleanValue b)
+        {
+            return Equals(ToBool(a), ToBool(b));
+        }
     }
 }

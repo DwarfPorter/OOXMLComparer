@@ -12,42 +12,39 @@ namespace OOXMLComparer.Drawing
 
         public override bool Compare()
         {
-            return a.CompareNullElements(b, t => !ToBool(t.NoAdjustHandles)
-                    && !ToBool(t.NoChangeArrowheads)
-                    && !ToBool(t.NoChangeAspect)
-                    && !ToBool(t.NoChangeShapeType)
-                    && !ToBool(t.NoCrop)
-                    && !ToBool(t.NoEditPoints)
-                    && !ToBool(t.NoGrouping)
-                    && !ToBool(t.NoMove)
-                    && !ToBool(t.NoResize)
-                    && !ToBool(t.NoRotation)
-                    && !ToBool(t.NoSelection))
-                ?? EqualBool(a.NoAdjustHandles, b.NoAdjustHandles)
-                && EqualBool(a.NoChangeArrowheads, b.NoChangeArrowheads)
-                && EqualBool(a.NoChangeAspect, b.NoChangeAspect)
-                && EqualBool(a.NoChangeShapeType, b.NoChangeShapeType)
-                && EqualBool(a.NoCrop, b.NoCrop)
-                && EqualBool(a.NoEditPoints, b.NoEditPoints)
-                && EqualBool(a.NoGrouping, b.NoGrouping)
-                && EqualBool(a.NoMove, b.NoMove)
-                && EqualBool(a.NoResize, b.NoResize)
-                && EqualBool(a.NoRotation, b.NoRotation)
-                && EqualBool(a.NoSelection, b.NoSelection);
+            return a.CompareNullElements(b, t => !t.NoAdjustHandles.ToBool()
+                    && !t.NoChangeArrowheads.ToBool()
+                    && !t.NoChangeAspect.ToBool()
+                    && !t.NoChangeShapeType.ToBool()
+                    && !t.NoCrop.ToBool()
+                    && !t.NoEditPoints.ToBool()
+                    && !t.NoGrouping.ToBool()
+                    && !t.NoMove.ToBool()
+                    && !t.NoResize.ToBool()
+                    && !t.NoRotation.ToBool()
+                    && !t.NoSelection.ToBool())
+                ?? OpenXmlComparerHelper.EqualBool(a.NoAdjustHandles, b.NoAdjustHandles)
+                && OpenXmlComparerHelper.EqualBool(a.NoChangeArrowheads, b.NoChangeArrowheads)
+                && OpenXmlComparerHelper.EqualBool(a.NoChangeAspect, b.NoChangeAspect)
+                && OpenXmlComparerHelper.EqualBool(a.NoChangeShapeType, b.NoChangeShapeType)
+                && OpenXmlComparerHelper.EqualBool(a.NoCrop, b.NoCrop)
+                && OpenXmlComparerHelper.EqualBool(a.NoEditPoints, b.NoEditPoints)
+                && OpenXmlComparerHelper.EqualBool(a.NoGrouping, b.NoGrouping)
+                && OpenXmlComparerHelper.EqualBool(a.NoMove, b.NoMove)
+                && OpenXmlComparerHelper.EqualBool(a.NoResize, b.NoResize)
+                && OpenXmlComparerHelper.EqualBool(a.NoRotation, b.NoRotation)
+                && OpenXmlComparerHelper.EqualBool(a.NoSelection, b.NoSelection);
+        }
+    }
+    public class NonVisualPictureDrawingPropertiesComparer : OpenXmlElementComparer<NonVisualPictureDrawingProperties>
+    {
+        public NonVisualPictureDrawingPropertiesComparer(NonVisualPictureDrawingProperties a, NonVisualPictureDrawingProperties b) : base(a, b)
+        {
         }
 
-        private static bool ToBool(BooleanValue a)
+        public override bool Compare()
         {
-            if (a == null)
-            {
-                return false;
-            }
-            return BooleanValue.ToBoolean(a);
-        }
-
-        private static bool EqualBool(BooleanValue a, BooleanValue b)
-        {
-            return Equals(ToBool(a), ToBool(b));
+            return true;
         }
     }
 }
