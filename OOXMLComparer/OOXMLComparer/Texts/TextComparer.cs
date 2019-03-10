@@ -2,7 +2,7 @@
 using OOXMLComparer.Helpers;
 using System;
 
-namespace OOXMLComparer
+namespace OOXMLComparer.Texts
 {
     public class TextComparer : OpenXmlElementComparer<Text>
     {

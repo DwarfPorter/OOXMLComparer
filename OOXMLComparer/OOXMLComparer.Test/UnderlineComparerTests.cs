@@ -41,6 +41,5 @@ namespace OOXMLComparer.Test
             var underlineComparer = new UnderlineComparer(a, b);
             Assert.IsFalse(underlineComparer.Compare());
         }
-
     }
 }
