@@ -32,10 +32,18 @@ namespace OOXMLComparer.Test
         }
 
         [Test]
-        public void BreakComparerWrongTest()
+        public void BreakComparerDefaultTest()
         {
             var a = new Break() { Type = BreakValues.TextWrapping };
             var b = new Break();
+            Assert.IsTrue(new BreakComparer(a, b).Compare());
+        }
+
+        [Test]
+        public void BreakComparerWrongTest()
+        {
+            var a = new Break() { Type = BreakValues.TextWrapping };
+            var b = new Break() { Type = BreakValues.Page };
             Assert.IsFalse(new BreakComparer(a, b).Compare());
         }
     }

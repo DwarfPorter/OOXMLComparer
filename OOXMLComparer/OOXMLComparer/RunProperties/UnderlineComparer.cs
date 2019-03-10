@@ -11,7 +11,7 @@ namespace OOXMLComparer.Properties
 
         public override bool Compare()
         {
-            return a.CompareNullElements(b, t => t.Val == UnderlineValues.None) ?? Equals(a.Val, b.Val);
+            return a.CompareNullElements(b, t => t.Val == UnderlineValues.None) ?? Equals(a.Val ?? UnderlineValues.None, b.Val ?? UnderlineValues.None);
         }
     }
 }

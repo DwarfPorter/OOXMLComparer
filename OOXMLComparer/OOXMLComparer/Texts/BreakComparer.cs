@@ -11,7 +11,7 @@ namespace OOXMLComparer.Texts
 
         public override bool Compare()
         {
-            return a.CompareNullElements(b) ?? Equals(a.Type, b.Type);
+            return a.CompareNullElements(b) ?? Equals(a.Type ?? BreakValues.TextWrapping, b.Type ?? BreakValues.TextWrapping);
         }
     }
 }
