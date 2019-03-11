@@ -1,6 +1,5 @@
 ﻿using DocumentFormat.OpenXml.Wordprocessing;
 using OOXMLComparer.Helpers;
-using System;
 
 namespace OOXMLComparer.Texts
 {

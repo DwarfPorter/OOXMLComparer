@@ -41,4 +41,5 @@ namespace OOXMLComparer.Test
             Assert.IsFalse(new SymbolCharComparer(a, b).Compare());
         }
     }
+
 }
