@@ -4,10 +4,10 @@ using OOXMLComparer.Texts;
 
 namespace OOXMLComparer.Test
 {
-    public class TabComparerTests
+    public class TabCharComparerTests
     {
         [Test]
-        public void BreakComparerTest()
+        public void TabCharComparerTest()
         {
             var a = new TabChar();
             var b = new TabChar();
@@ -15,7 +15,7 @@ namespace OOXMLComparer.Test
         }
 
         [Test]
-        public void BreakComparerNullTest()
+        public void TabCharComparerNullTest()
         {
             var a = new TabChar();
             Assert.IsFalse(new TabCharComparer(a, null).Compare());
