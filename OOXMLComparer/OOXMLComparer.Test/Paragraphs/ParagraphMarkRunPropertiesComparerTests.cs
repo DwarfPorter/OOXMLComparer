@@ -28,14 +28,4 @@ namespace OOXMLComparer.Test.Paragraphs
             Assert.IsTrue(new ParagraphMarkRunPropertiesComparer(a, b).Compare());
         }
     }
-    public class ParagraphStyleIdComparerTests
-    {
-        [Test]
-        public void ParagraphStyleIdComparerTest()
-        {
-            var a = new ParagraphMarkRunProperties();
-            var b = new ParagraphMarkRunProperties();
-            Assert.IsTrue(new ParagraphStyleIdComparer(a, b).Compare());
-        }
-    }
 }
