@@ -1,7 +1,7 @@
 ﻿using DocumentFormat.OpenXml.Wordprocessing;
 using OOXMLComparer.Helpers;
 
-namespace OOXMLComparer.Texts
+namespace OOXMLComparer
 {
     public abstract class EmptyTypeComparer : OpenXmlElementComparer<EmptyType>
     {
