@@ -1,11 +1,11 @@
 ﻿using DocumentFormat.OpenXml.Wordprocessing;
 using OOXMLComparer.Helpers;
 
-namespace OOXMLComparer.Paragraphs
+namespace OOXMLComparer.Paragraphs.SectionProperties
 {
-    public class ParagraphBordersComparer : OpenXmlElementComparer<ParagraphBorders>
+    public class PageBordersComparer : OpenXmlElementComparer<PageBorders>
     {
-        public ParagraphBordersComparer(ParagraphBorders a, ParagraphBorders b) : base(a, b)
+        public PageBordersComparer(PageBorders a, PageBorders b) : base(a, b)
         {
         }
 
