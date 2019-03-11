@@ -7,7 +7,7 @@ namespace OOXMLComparer.Test.Paragraphs
     public class TopBorderComparerTests
     {
         [Test]
-        public void BottomBorderComparerTest()
+        public void TopBorderComparerTest()
         {
             var a = new TopBorder();
             var b = new TopBorder();
@@ -15,7 +15,7 @@ namespace OOXMLComparer.Test.Paragraphs
         }
 
         [Test]
-        public void BottomBorderComparerValWrongTest()
+        public void TopBorderComparerValWrongTest()
         {
             var a = new TopBorder() { Val = BorderValues.BabyRattle };
             var b = new TopBorder();
@@ -23,7 +23,7 @@ namespace OOXMLComparer.Test.Paragraphs
         }
 
         [Test]
-        public void BottomBorderComparerSizeWrongTest()
+        public void TopBorderComparerSizeWrongTest()
         {
             var a = new TopBorder() { Size = 2 };
             var b = new TopBorder();
@@ -31,7 +31,7 @@ namespace OOXMLComparer.Test.Paragraphs
         }
 
         [Test]
-        public void BottomBorderComparerSpaceWrongTest()
+        public void TopBorderComparerSpaceWrongTest()
         {
             var a = new TopBorder() { Space = 2 };
             var b = new TopBorder() { Space = 6 };
@@ -39,31 +39,11 @@ namespace OOXMLComparer.Test.Paragraphs
         }
 
         [Test]
-        public void BottomBorderComparerColorWrongTest()
+        public void TopBorderComparerColorWrongTest()
         {
             var a = new TopBorder() { Color = "Auto" };
             var b = new TopBorder() { Color = "Blue" };
             Assert.IsFalse(new TopBorderComparer(a, b).Compare());
-        }
-    }
-    public class RightBorderComparerTests
-    {
-        [Test]
-        public void BottomBorderComparerTest()
-        {
-            var a = new RightBorder();
-            var b = new RightBorder();
-            Assert.IsTrue(new RightBorderComparer(a, b).Compare());
-        }
-    }
-    public class LeftBorderComparerTests
-    {
-        [Test]
-        public void BottomBorderComparerTest()
-        {
-            var a = new LeftBorder();
-            var b = new LeftBorder();
-            Assert.IsTrue(new LeftBorderComparer(a, b).Compare());
         }
     }
 }
