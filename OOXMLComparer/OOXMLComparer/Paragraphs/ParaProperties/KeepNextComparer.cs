@@ -1,6 +1,6 @@
 ﻿using DocumentFormat.OpenXml.Wordprocessing;
 
-namespace OOXMLComparer.Paragraphs
+namespace OOXMLComparer.Paragraphs.ParaProperties
 {
     public class KeepNextComparer : OnOffComparer
     {

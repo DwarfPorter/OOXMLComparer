@@ -1,7 +1,7 @@
 ﻿using DocumentFormat.OpenXml.Wordprocessing;
 using OOXMLComparer.Helpers;
 
-namespace OOXMLComparer.Paragraphs
+namespace OOXMLComparer.Paragraphs.ParaProperties
 {
     public class IndentationComparer : OpenXmlElementComparer<Indentation>
     {

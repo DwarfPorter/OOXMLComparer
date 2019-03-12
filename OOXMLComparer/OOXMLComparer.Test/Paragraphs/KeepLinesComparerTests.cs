@@ -1,8 +1,8 @@
 ﻿using DocumentFormat.OpenXml.Wordprocessing;
 using NUnit.Framework;
-using OOXMLComparer.Paragraphs;
+using OOXMLComparer.Paragraphs.ParaProperties;
 
-namespace OOXMLComparer.Test
+namespace OOXMLComparer.Test.Paragraphs
 {
     public class KeepLinesComparerTests
     {

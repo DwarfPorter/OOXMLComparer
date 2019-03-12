@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using OOXMLComparer.Properties;
 
-namespace OOXMLComparer.Test
+namespace OOXMLComparer.Test.Runs
 {
     public class UnderlineComparerTests
     {

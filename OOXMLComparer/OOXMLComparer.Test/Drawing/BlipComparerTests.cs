@@ -5,7 +5,6 @@ using NUnit.Framework;
 using OOXMLComparer.Drawing;
 using System.IO;
 using System.Linq;
-using Run = DocumentFormat.OpenXml.Wordprocessing.Run;
 
 namespace OOXMLComparer.Test
 {
@@ -152,7 +151,7 @@ namespace OOXMLComparer.Test
             doc.Document = new Document(
                 new Body(
                     new DocumentFormat.OpenXml.Wordprocessing.Paragraph(
-                        new Run(
+                        new DocumentFormat.OpenXml.Wordprocessing.Run(
                             new DocumentFormat.OpenXml.Wordprocessing.Drawing(
                                 new DocumentFormat.OpenXml.Drawing.Wordprocessing.Inline(
                                     new DocumentFormat.OpenXml.Drawing.Graphic(
@@ -175,7 +174,7 @@ namespace OOXMLComparer.Test
             var imagePartHeaderId = headerPart.GetIdOfPart(iHeaderpart);
 
             var header = new Header(new DocumentFormat.OpenXml.Wordprocessing.Paragraph(
-                new Run(
+                new DocumentFormat.OpenXml.Wordprocessing.Run(
                     new DocumentFormat.OpenXml.Wordprocessing.Drawing(
                         new DocumentFormat.OpenXml.Drawing.Wordprocessing.Inline(
                             new DocumentFormat.OpenXml.Drawing.Graphic(
@@ -200,7 +199,7 @@ namespace OOXMLComparer.Test
             var imagePartFooterId = footerPart.GetIdOfPart(iFooterpart);
 
             var footer = new Footer(new DocumentFormat.OpenXml.Wordprocessing.Paragraph(
-                new Run(
+                new DocumentFormat.OpenXml.Wordprocessing.Run(
                     new DocumentFormat.OpenXml.Wordprocessing.Drawing(
                         new DocumentFormat.OpenXml.Drawing.Wordprocessing.Inline(
                             new DocumentFormat.OpenXml.Drawing.Graphic(

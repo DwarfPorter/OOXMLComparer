@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using OOXMLComparer.Texts;
 
-namespace OOXMLComparer.Test
+namespace OOXMLComparer.Test.Runs
 {
     public class SoftHyphenComparerTests
     {

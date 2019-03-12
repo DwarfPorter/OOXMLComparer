@@ -4,7 +4,7 @@ using NUnit.Framework;
 using OOXMLComparer.Properties;
 using System.Collections.Generic;
 
-namespace OOXMLComparer.Test
+namespace OOXMLComparer.Test.Runs
 {
     public class RunPropertiesComparerTests
     {

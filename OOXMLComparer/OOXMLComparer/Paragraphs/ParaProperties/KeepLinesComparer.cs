@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using DocumentFormat.OpenXml.Wordprocessing;
+﻿using DocumentFormat.OpenXml.Wordprocessing;
 
-namespace OOXMLComparer.Paragraphs
+namespace OOXMLComparer.Paragraphs.ParaProperties
 {
     public class KeepLinesComparer : OnOffComparer
     {
