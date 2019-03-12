@@ -14,4 +14,15 @@ namespace OOXMLComparer.Tables.TableProperties
             return a.CompareChildren2(b);
         }
     }
+    public class TableBordersComparer : OpenXmlElementComparer<TableBorders>
+    {
+        public TableCellBordersComparer(TableBorders a, TableBorders b) : base(a, b)
+        {
+        }
+
+        public override bool Compare()
+        {
+            return a.CompareChildren2(b);
+        }
+    }
 }
