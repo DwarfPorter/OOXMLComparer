@@ -14,4 +14,14 @@ namespace OOXMLComparer.Test.Tables.TableProperties
             Assert.IsTrue(new TopMarginComparer(a, b).Compare());
         }
     }
+    public class CantSplitComparerTests
+    {
+        [Test]
+        public void CantSplitComparerTest()
+        {
+            var a = new CantSplit();
+            var b = new CantSplit();
+            Assert.IsTrue(new CantSplitComparer(a, b).Compare());
+        }
+    }
 }
