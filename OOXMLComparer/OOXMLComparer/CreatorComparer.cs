@@ -12,6 +12,10 @@ namespace OOXMLComparer
 
         public IOpenXmlElementComparer Create(OpenXmlElement a, OpenXmlElement b)
         {
+            if (a == null && b == null)
+            {
+                return new OpenXmlElementComparer(a, b);
+            }
             Type type = GetType(a, b);
             ConstructorInfo comparerConstructor = null;
             if (!cacheTypes.TryGetValue(type, out comparerConstructor))

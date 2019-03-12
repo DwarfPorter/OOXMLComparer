@@ -14,18 +14,7 @@ namespace OOXMLComparer.Texts
 
         public override bool Compare()
         {
-            var answer = a.CompareNullElements(b);
-            if (answer != null)
-            {
-                return answer.Value;
-            }
-            RunPropertiesComparer propComparer = new RunPropertiesComparer(a.RunProperties, b.RunProperties);
-            var answer2 = propComparer.Compare();
-            if (!answer2)
-            {
-                return answer2;
-            }
-            return a.CompareOrderedChildren(b, typeof(RunProperties));
+            return a.CompareOrderedChildren(b, t => ((Run)t).RunProperties);
         }
     }
 }
