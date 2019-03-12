@@ -1,7 +1,5 @@
-﻿using DocumentFormat.OpenXml;
-using DocumentFormat.OpenXml.Wordprocessing;
+﻿using DocumentFormat.OpenXml.Wordprocessing;
 using OOXMLComparer.Helpers;
-using System.Linq;
 
 namespace OOXMLComparer.Properties
 {
