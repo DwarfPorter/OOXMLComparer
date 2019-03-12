@@ -14,14 +14,4 @@ namespace OOXMLComparer.Test.Tables.TableProperties
             Assert.IsTrue(new TableCellWidthComparer(a, b).Compare());
         }
     }
-    public class TableCellSpacingComparerTests
-    {
-        [Test]
-        public void TableCellSpacingComparerTest()
-        {
-            var a = new TableCellSpacing();
-            var b = new TableCellSpacing();
-            Assert.IsTrue(new TableCellSpacingComparer(a, b).Compare());
-        }
-    }
 }
