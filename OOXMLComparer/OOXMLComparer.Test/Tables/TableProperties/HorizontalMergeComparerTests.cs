@@ -22,22 +22,4 @@ namespace OOXMLComparer.Test.Tables.TableProperties
             Assert.IsFalse(new HorizontalMergeComparer(a, b).Compare());
         }
     }
-    public class VerticalMergeComparerTests
-    {
-        [Test]
-        public void HorizontalMergeComparerTest()
-        {
-            var a = new VerticalMerge();
-            var b = new VerticalMerge();
-            Assert.IsTrue(new VerticalMergeComparer(a, b).Compare());
-        }
-
-        [Test]
-        public void VerticalMergeComparerWrongTest()
-        {
-            var a = new VerticalMerge() { Val = MergedCellValues.Continue };
-            var b = new VerticalMerge() { Val = MergedCellValues.Restart };
-            Assert.IsFalse(new VerticalMergeComparer(a, b).Compare());
-        }
-    }
 }
