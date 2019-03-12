@@ -25,8 +25,8 @@ namespace OOXMLComparer.Test.Paragraphs.SectionProperties
         [Test]
         public void ColumnsComparerChildrenHappyTest()
         {
-            var a = new Columns(new Column() { Width = "1" });
-            var b = new Columns(new Column() { Width = "1" });
+            var a = new Columns(new Column() { Width = "1" }, new Column() { Width = "2", Space = "3" });
+            var b = new Columns(new Column() { Width = "1" }, new Column() { Width = "2", Space = "3" });
             Assert.IsTrue(new ColumnsComparer(a, b).Compare());
         }
 

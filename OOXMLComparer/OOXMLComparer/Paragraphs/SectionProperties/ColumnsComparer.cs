@@ -16,7 +16,7 @@ namespace OOXMLComparer.Paragraphs.SectionProperties
                 && Equals(a.Space, b.Space) 
                 && Equals(a.ColumnCount, b.ColumnCount)
                 && Equals(a.Separator, b.Separator)
-                && a.CompareChildren2(b);
+                && a.ChildElements.CompareOrderedChildren(b.ChildElements);
         }
     }
 }

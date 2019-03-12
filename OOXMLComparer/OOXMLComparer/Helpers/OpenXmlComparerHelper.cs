@@ -1,5 +1,6 @@
 ﻿using DocumentFormat.OpenXml;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -7,6 +8,32 @@ namespace OOXMLComparer.Helpers
 {
     public static class OpenXmlComparerHelper
     {
+
+        public static bool CompareOrderedChildren(this IEnumerable<OpenXmlElement> childrenAi, IEnumerable<OpenXmlElement> childrenBi)
+        {
+            var childrenA = childrenAi.ToArray();
+            var childrenB = childrenBi.ToArray();
+            if (childrenA.Length != childrenB.Length)
+            {
+                return false;
+            }
+            var creatorComparer = new CreatorComparer();
+            var cnt = childrenA.Length;
+            for (var i = 0; i < cnt; i++)
+            {
+                if (childrenA[i].GetType() != childrenB[i].GetType())
+                {
+                    return false;
+                }
+                IOpenXmlElementComparer comparer = creatorComparer.Create(childrenA[i], childrenB[i]);
+                if (!comparer.Compare())
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
         public static bool CompareChildren(this OpenXmlElementList childrenA, OpenXmlElementList childrenB)
         {
             var creatorComparer = new CreatorComparer();
