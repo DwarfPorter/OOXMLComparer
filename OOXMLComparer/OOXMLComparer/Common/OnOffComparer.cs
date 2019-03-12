@@ -1,7 +1,7 @@
 ﻿using DocumentFormat.OpenXml.Wordprocessing;
 using OOXMLComparer.Helpers;
 
-namespace OOXMLComparer
+namespace OOXMLComparer.Common
 {
     public abstract class OnOffComparer : OpenXmlElementComparer<OnOffType>
     {

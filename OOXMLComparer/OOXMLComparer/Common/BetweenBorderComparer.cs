@@ -1,6 +1,6 @@
 ﻿using DocumentFormat.OpenXml.Wordprocessing;
 
-namespace OOXMLComparer.Paragraphs
+namespace OOXMLComparer.Common
 {
     public class BetweenBorderComparer : BorderTypeComparer
     {
