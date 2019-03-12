@@ -25,7 +25,7 @@ namespace OOXMLComparer.Texts
             {
                 return answer2;
             }
-            return OpenXmlComparerHelper.CompareOrderedChildren(a.ChildElements.Where(p => p.GetType() != typeof(RunProperties)), b.ChildElements.Where(p => p.GetType() != typeof(RunProperties)));
+            return a.CompareOrderedChildren(b, typeof(RunProperties));
         }
     }
 }

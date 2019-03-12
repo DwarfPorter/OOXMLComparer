@@ -34,6 +34,27 @@ namespace OOXMLComparer.Helpers
             return true;
         }
 
+        public static bool CompareOrderedChildren(this OpenXmlElement a, OpenXmlElement b, Type typeProperties)
+        {
+            return CompareOrderedChildren(a.ChildElements.Where(p => p.GetType() != typeProperties), b.ChildElements.Where(p => p.GetType() != typeProperties));
+        }
+
+        public static bool CompareOrderedChildren<TProperties>(this OpenXmlElement a, OpenXmlElement b, Func<OpenXmlElement, TProperties> propertyForCompare) where TProperties : OpenXmlElement
+        {
+            var answer = a.CompareNullElements(b);
+            if (answer != null)
+            {
+                return answer.Value;
+            }
+            var propComparer = new CreatorComparer().Create(propertyForCompare(a), propertyForCompare(b));
+            var answer2 = propComparer.Compare();
+            if (!answer2)
+            {
+                return answer2;
+            }
+            return a.CompareOrderedChildren(b, typeof(TProperties));
+        }
+
         public static bool CompareChildren(this OpenXmlElementList childrenA, OpenXmlElementList childrenB)
         {
             var creatorComparer = new CreatorComparer();
