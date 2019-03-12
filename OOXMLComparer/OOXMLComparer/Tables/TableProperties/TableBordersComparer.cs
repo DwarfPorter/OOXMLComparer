@@ -3,9 +3,9 @@ using OOXMLComparer.Helpers;
 
 namespace OOXMLComparer.Tables.TableProperties
 {
-    public class TableCellBordersComparer : OpenXmlElementComparer<TableCellBorders>
+    public class TableBordersComparer : OpenXmlElementComparer<TableBorders>
     {
-        public TableCellBordersComparer(TableCellBorders a, TableCellBorders b) : base(a, b)
+        public TableBordersComparer(TableBorders a, TableBorders b) : base(a, b)
         {
         }
 
