@@ -22,5 +22,4 @@ namespace OOXMLComparer.Test.Tables
             Assert.IsFalse(new TableRowComparer(a, b).Compare());
         }
     }
-
 }

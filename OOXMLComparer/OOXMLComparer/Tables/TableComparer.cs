@@ -3,11 +3,9 @@ using OOXMLComparer.Helpers;
 
 namespace OOXMLComparer.Tables
 {
-    public class TableGridComparer : OpenXmlElementComparer<TableGrid>
+    public class TableComparer : OpenXmlElementComparer<Table>
     {
-        public TableGridComparer(TableGrid a, TableGrid b) : base(a, b)
-        {
-        }
+        public TableComparer(Table a, Table b) : base(a, b) { }
 
         public override bool Compare()
         {
