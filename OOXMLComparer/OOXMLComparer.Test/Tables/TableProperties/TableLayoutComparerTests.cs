@@ -33,6 +33,5 @@ namespace OOXMLComparer.Test.Tables.TableProperties
             Assert.IsTrue(new TableLayoutComparer(a, b).Compare());
             Assert.IsTrue(new TableLayoutComparer(a, null).Compare());
         }
-
     }
 }

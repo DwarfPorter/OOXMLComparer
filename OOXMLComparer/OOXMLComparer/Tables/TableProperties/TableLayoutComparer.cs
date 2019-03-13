@@ -1,5 +1,4 @@
 ﻿using DocumentFormat.OpenXml.Wordprocessing;
-using System;
 using OOXMLComparer.Helpers;
 
 namespace OOXMLComparer.Tables.TableProperties
