@@ -10,7 +10,7 @@ namespace OOXMLComparer.Tables.TableProperties
 
         public override bool Compare()
         {
-            return true;
+            return a.CompareChildren2(b);
         }
     }
 }
