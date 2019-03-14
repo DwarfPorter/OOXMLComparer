@@ -1,9 +1,6 @@
 ﻿using DocumentFormat.OpenXml.Wordprocessing;
 using NUnit.Framework;
 using OOXMLComparer.Tables.TableProperties;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace OOXMLComparer.Test.Tables.TableProperties
 {
