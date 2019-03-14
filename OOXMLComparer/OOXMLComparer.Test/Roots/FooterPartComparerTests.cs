@@ -5,52 +5,52 @@ using OOXMLComparer.Roots;
 
 namespace OOXMLComparer.Test.Roots
 {
-    public class HeaderPartComparerTests
+    public class FooterPartComparerTests
     {
         [Test]
-        public void HeaderPartComparerTest()
+        public void FooterPartComparerTest()
         {
             using (WordprocessingDocument aDoc = WordprocessingDocument.Create("test1.docx", DocumentFormat.OpenXml.WordprocessingDocumentType.Document))
             {
                 using (WordprocessingDocument bDoc = WordprocessingDocument.Create("test2.docx", DocumentFormat.OpenXml.WordprocessingDocumentType.Document))
                 {
                     var aMainDocPart = aDoc.AddMainDocumentPart();
-                    var a = CreateNewHeaderPart(aMainDocPart);
-                    a.Header = new Header(new Paragraph(new Run(new Text("111"))));
+                    var a = CreateNewFooterPart(aMainDocPart);
+                    a.Footer = new Footer(new Paragraph(new Run(new Text("111"))));
 
                     var bMainDocPart = bDoc.AddMainDocumentPart();
-                    var b = CreateNewHeaderPart(bMainDocPart);
-                    b.Header = new Header(new Paragraph(new Run(new Text("111"))));
-                    Assert.IsTrue(new HeaderPartComparer(a, b).Compare());
+                    var b = CreateNewFooterPart(bMainDocPart);
+                    b.Footer = new Footer(new Paragraph(new Run(new Text("111"))));
+                    Assert.IsTrue(new FooterPartComparer(a, b).Compare());
                 }
             }
         }
 
         [Test]
-        public void HeaderPartComparerWrongTest()
+        public void FooterPartComparerWrongTest()
         {
             using (WordprocessingDocument aDoc = WordprocessingDocument.Create("test1.docx", DocumentFormat.OpenXml.WordprocessingDocumentType.Document))
             {
                 using (WordprocessingDocument bDoc = WordprocessingDocument.Create("test2.docx", DocumentFormat.OpenXml.WordprocessingDocumentType.Document))
                 {
                     var aMainDocPart = aDoc.AddMainDocumentPart();
-                    var a = CreateNewHeaderPart(aMainDocPart);
-                    a.Header = new Header(new Paragraph(new Run(new Text("111"))));
+                    var a = CreateNewFooterPart(aMainDocPart);
+                    a.Footer = new Footer(new Paragraph(new Run(new Text("111"))));
 
                     var bMainDocPart = bDoc.AddMainDocumentPart();
-                    var b = CreateNewHeaderPart(bMainDocPart);
-                    b.Header = new Header(new Paragraph(new Run(new Text("222"))));
-                    Assert.IsFalse(new HeaderPartComparer(a, b).Compare());
+                    var b = CreateNewFooterPart(bMainDocPart);
+                    b.Footer = new Footer(new Paragraph(new Run(new Text("222"))));
+                    Assert.IsFalse(new FooterPartComparer(a, b).Compare());
                 }
             }
         }
 
-        private HeaderPart CreateNewHeaderPart(MainDocumentPart main)
+        private FooterPart CreateNewFooterPart(MainDocumentPart main)
         {
-            var headerPart = main.AddNewPart<HeaderPart>();
-            string aHeaderPartId = main.GetIdOfPart(headerPart);
-            main.Document = new Document(new Body(new Paragraph(), new SectionProperties(new HeaderReference { Id = aHeaderPartId })));
-            return headerPart;
+            var footerPart = main.AddNewPart<FooterPart>();
+            string aFooterPartId = main.GetIdOfPart(footerPart);
+            main.Document = new Document(new Body(new Paragraph(), new SectionProperties(new HeaderReference { Id = aFooterPartId })));
+            return footerPart;
         }
     }
 }
