@@ -2,6 +2,7 @@
 using DocumentFormat.OpenXml.Wordprocessing;
 using NUnit.Framework;
 using OOXMLComparer.Roots;
+using System.Linq;
 
 namespace OOXMLComparer.Test.Roots
 {
