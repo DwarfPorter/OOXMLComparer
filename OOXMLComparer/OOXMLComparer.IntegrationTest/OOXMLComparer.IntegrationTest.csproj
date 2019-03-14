@@ -14,7 +14,23 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="TestData\" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\OOXMLComparer\OOXMLComparer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="TestData\SimpleDoc1.docx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\SimpleDoc2.docx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\SimpleDoc3.docx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
