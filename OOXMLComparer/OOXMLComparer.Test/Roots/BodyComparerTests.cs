@@ -25,7 +25,7 @@ namespace OOXMLComparer.Test.Roots
         [Test]
         public void BodyComparerHappyTest()
         {
-            var a = new Body(new Paragraph( new Run(new Text("Test"))), new Table(new TableRow(new TableCell(new Paragraph(new Run (new Text("test2")))))));
+            var a = new Body(new Paragraph(new Run(new Text("Test"))), new Table(new TableRow(new TableCell(new Paragraph(new Run(new Text("test2")))))));
             var b = new Body(new Paragraph(new Run(new Text("Test"))), new Table(new TableRow(new TableCell(new Paragraph(new Run(new Text("test2")))))));
             Assert.IsTrue(new BodyComparer(a, b).Compare());
         }

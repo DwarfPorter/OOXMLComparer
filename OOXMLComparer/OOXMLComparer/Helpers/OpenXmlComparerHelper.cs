@@ -1,4 +1,5 @@
 ﻿using DocumentFormat.OpenXml;
+using DocumentFormat.OpenXml.Wordprocessing;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,8 +12,8 @@ namespace OOXMLComparer.Helpers
 
         public static bool CompareOrderedChildren(this IEnumerable<OpenXmlElement> childrenAi, IEnumerable<OpenXmlElement> childrenBi)
         {
-            var childrenA = childrenAi.ToArray();
-            var childrenB = childrenBi.ToArray();
+            var childrenA = childrenAi.Where(t => (t.GetType() != typeof(BookmarkStart)) && (t.GetType() != typeof(BookmarkEnd))).ToArray();
+            var childrenB = childrenBi.Where(t => (t.GetType() != typeof(BookmarkStart)) && (t.GetType() != typeof(BookmarkEnd))).ToArray();
             if (childrenA.Length != childrenB.Length)
             {
                 return false;
