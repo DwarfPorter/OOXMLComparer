@@ -1,4 +1,5 @@
 ﻿using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml.Wordprocessing;
 
 namespace OOXMLComparer.Roots
 {
@@ -14,5 +15,4 @@ namespace OOXMLComparer.Roots
             return docComparer.Compare();
         }
     }
-
 }
