@@ -11,7 +11,7 @@ namespace OOXMLComparer.Roots
 
         public override bool Compare()
         {
-            return a.CompareOrderedChildren(b);
+            return a.CompareNullElements(b) ?? a.CompareOrderedChildren(b);
         }
     }
 }
