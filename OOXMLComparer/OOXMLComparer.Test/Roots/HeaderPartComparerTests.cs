@@ -64,11 +64,11 @@ namespace OOXMLComparer.Test.Roots
                 using (WordprocessingDocument bDoc = WordprocessingDocument.Create("test2.docx", DocumentFormat.OpenXml.WordprocessingDocumentType.Document))
                 {
                     var aMainDocPart = aDoc.AddMainDocumentPart();
-                    var a = CreateNewHeaderPart(aMainDocPart);
+                    var a = CreateNewFooterPart(aMainDocPart);
                     a.Footer = new Footer(new Paragraph(new Run(new Text("111"))));
 
                     var bMainDocPart = bDoc.AddMainDocumentPart();
-                    var b = CreateNewHeaderPart(bMainDocPart);
+                    var b = CreateNewFooterPart(bMainDocPart);
                     b.Footer = new Footer(new Paragraph(new Run(new Text("111"))));
                     Assert.IsTrue(new FooterPartComparer(a, b).Compare());
                 }
@@ -76,25 +76,25 @@ namespace OOXMLComparer.Test.Roots
         }
 
         [Test]
-        public void HeaderPartComparerWrongTest()
+        public void FooterPartComparerWrongTest()
         {
             using (WordprocessingDocument aDoc = WordprocessingDocument.Create("test1.docx", DocumentFormat.OpenXml.WordprocessingDocumentType.Document))
             {
                 using (WordprocessingDocument bDoc = WordprocessingDocument.Create("test2.docx", DocumentFormat.OpenXml.WordprocessingDocumentType.Document))
                 {
                     var aMainDocPart = aDoc.AddMainDocumentPart();
-                    var a = CreateNewHeaderPart(aMainDocPart);
+                    var a = CreateNewFooterPart(aMainDocPart);
                     a.Footer = new Footer(new Paragraph(new Run(new Text("111"))));
 
                     var bMainDocPart = bDoc.AddMainDocumentPart();
-                    var b = CreateNewHeaderPart(bMainDocPart);
+                    var b = CreateNewFooterPart(bMainDocPart);
                     b.Footer = new Footer(new Paragraph(new Run(new Text("222"))));
                     Assert.IsFalse(new FooterPartComparer(a, b).Compare());
                 }
             }
         }
 
-        private FooterPart CreateNewHeaderPart(MainDocumentPart main)
+        private FooterPart CreateNewFooterPart(MainDocumentPart main)
         {
             var footerPart = main.AddNewPart<FooterPart>();
             string aFooterPartId = main.GetIdOfPart(footerPart);
