@@ -26,7 +26,7 @@ namespace OOXMLComparer.Helpers
                 {
                     return false;
                 }
-                IOpenXmlElementComparer comparer = creatorComparer.Create(childrenA[i], childrenB[i]);
+                IOpenXmlComparer comparer = creatorComparer.Create(childrenA[i], childrenB[i]);
                 if (!comparer.Compare())
                 {
                     return false;

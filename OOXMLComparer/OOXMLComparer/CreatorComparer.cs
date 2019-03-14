@@ -10,7 +10,7 @@ namespace OOXMLComparer
     {
         private static ConcurrentDictionary<Type, ConstructorInfo> cacheTypes = new ConcurrentDictionary<Type, ConstructorInfo>();
 
-        public IOpenXmlElementComparer Create(OpenXmlElement a, OpenXmlElement b)
+        public IOpenXmlComparer Create(OpenXmlElement a, OpenXmlElement b)
         {
             if (a == null && b == null)
             {
@@ -20,7 +20,7 @@ namespace OOXMLComparer
             ConstructorInfo comparerConstructor = null;
             if (!cacheTypes.TryGetValue(type, out comparerConstructor))
             {
-                foreach(Type classType in System.Reflection.Assembly.GetExecutingAssembly().GetTypes().Where(t => t.GetInterfaces().Contains(typeof(IOpenXmlElementComparer))))
+                foreach(Type classType in System.Reflection.Assembly.GetExecutingAssembly().GetTypes().Where(t => t.GetInterfaces().Contains(typeof(IOpenXmlComparer))))
                 {
                     var constructor = classType.GetConstructors().Where(c => c.GetParameters().Count(p => p.ParameterType == type) == 2).FirstOrDefault();
                     if (constructor != null)
@@ -37,7 +37,7 @@ namespace OOXMLComparer
             }
 
             var answer = comparerConstructor.Invoke(new object[] { a, b });
-            IOpenXmlElementComparer result = answer as IOpenXmlElementComparer;
+            IOpenXmlComparer result = answer as IOpenXmlComparer;
             return result;
         }
 

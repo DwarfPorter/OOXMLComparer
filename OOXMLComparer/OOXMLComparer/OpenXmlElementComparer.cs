@@ -2,7 +2,7 @@
 
 namespace OOXMLComparer
 {
-    public abstract class OpenXmlElementComparer<T> : IOpenXmlElementComparer where T : OpenXmlElement
+    public abstract class OpenXmlElementComparer<T> : IOpenXmlComparer where T : OpenXmlElement
     {
         protected T a;
         protected T b;
