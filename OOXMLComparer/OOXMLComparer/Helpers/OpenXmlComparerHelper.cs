@@ -61,11 +61,19 @@ namespace OOXMLComparer.Helpers
 
         public static bool CompareChildren2(this OpenXmlElement a, OpenXmlElement b)
         {
+            if (a == null && b == null)
+            {
+                return true;
+            }
+            if (a == null && !b.ChildElements.Any())
+            {
+                return true;
+            }
             if (!a.ChildElements.Any() && b == null)
             {
                 return true;
             }
-            if (b == null)
+            if (a == null || b == null)
             {
                 return false;
             }
@@ -76,7 +84,11 @@ namespace OOXMLComparer.Helpers
 
         public static bool? CompareNullElements(this OpenXmlElement a, OpenXmlElement b)
         {
-            if (b == null)
+            if (a == null && b == null)
+            {
+                return true;
+            }
+            if (a == null || b == null)
             {
                 return false;
             }
@@ -85,9 +97,21 @@ namespace OOXMLComparer.Helpers
 
         public static bool? CompareNullElements<T>(this T a, T b, Func<T, bool> checkNullorDefault) where T : OpenXmlElement
         {
-            if (b == null)
+            if (a == null && b == null)
             {
-                return checkNullorDefault(a);
+                return true;
+            }
+            if (a == null && checkNullorDefault(b))
+            {
+                return true;
+            }
+            if (b == null && checkNullorDefault(a))
+            {
+                return true;
+            }
+            if (a == null || b == null)
+            {
+                return false;
             }
             return null;
         }
