@@ -4,6 +4,7 @@ using OOXMLComparer.Paragraphs.SectionProperties;
 
 namespace OOXMLComparer.Test.Paragraphs.SectionProperties
 {
+    [Category("OOXML")]
     public class PageMarginComparerTests
     {
         [Test]

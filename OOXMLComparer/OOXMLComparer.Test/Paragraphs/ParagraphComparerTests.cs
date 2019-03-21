@@ -4,6 +4,7 @@ using OOXMLComparer.Paragraphs;
 
 namespace OOXMLComparer.Test.Paragraphs
 {
+    [Category("OOXML")]
     public class ParagraphComparerTests
     {
         [Test]

@@ -4,6 +4,7 @@ using OOXMLComparer.Drawing;
 
 namespace OOXMLComparer.Test
 {
+    [Category("OOXML")]
     public class PresetGeometryComparerTests
     {
         [Test]
@@ -20,7 +21,6 @@ namespace OOXMLComparer.Test
 
             var c = new PresetGeometry();
             Assert.IsTrue(new PresetGeometryComparer(c, null).Compare());
-            Assert.IsTrue(new PresetGeometryComparer(null, c).Compare());
         }
 
         [Test]
@@ -38,8 +38,6 @@ namespace OOXMLComparer.Test
         {
             var a = new PresetGeometry { Preset = ShapeTypeValues.Rectangle };
             Assert.IsFalse(new PresetGeometryComparer(a, null).Compare());
-            Assert.IsFalse(new PresetGeometryComparer(null, a).Compare());
-            Assert.IsTrue(new PresetGeometryComparer(null, null).Compare());
         }
     }
 }

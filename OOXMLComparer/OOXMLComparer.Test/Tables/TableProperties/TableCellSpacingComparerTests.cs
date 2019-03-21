@@ -4,6 +4,7 @@ using OOXMLComparer.Tables.TableProperties;
 
 namespace OOXMLComparer.Test.Tables.TableProperties
 {
+    [Category("OOXML")]
     public class TableCellSpacingComparerTests
     {
         [Test]
@@ -11,7 +12,7 @@ namespace OOXMLComparer.Test.Tables.TableProperties
         {
             var a = new TableCellSpacing();
             var b = new TableCellSpacing();
-            Assert.IsTrue(new TableCellSpacingComparer(a, b).Compare());
+            Assert.IsTrue(ComparerFactory.Create(a, b).Compare());
         }
     }
 }

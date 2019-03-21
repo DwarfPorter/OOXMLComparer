@@ -4,6 +4,7 @@ using OOXMLComparer.Tables.TableProperties;
 
 namespace OOXMLComparer.Test.Tables.TableProperties
 {
+    [Category("OOXML")]
     public class TableCellWidthComparerTests
     {
         [Test]

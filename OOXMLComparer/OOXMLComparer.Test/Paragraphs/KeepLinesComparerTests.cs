@@ -1,9 +1,10 @@
 ﻿using DocumentFormat.OpenXml.Wordprocessing;
 using NUnit.Framework;
-using OOXMLComparer.Paragraphs.ParaProperties;
+using OOXMLComparer.Paragraphs.ParagraphProperties;
 
 namespace OOXMLComparer.Test.Paragraphs
 {
+    [Category("OOXML")]
     public class KeepLinesComparerTests
     {
         [Test]
@@ -21,5 +22,20 @@ namespace OOXMLComparer.Test.Paragraphs
             var b = new KeepLines();
             Assert.IsFalse(new KeepLinesComparer(a, b).Compare());
         }
+
+        [Test]
+        public void KeepLinesComparerNullDefaultTest()
+        {
+            var a = new KeepLines() { Val = false };
+            Assert.IsTrue(new KeepLinesComparer(a, null).Compare());
+        }
+
+        [Test]
+        public void KeepLinesComparerNullTest()
+        {
+            var a = new KeepLines();
+            Assert.IsTrue(new KeepLinesComparer(a, null).Compare());
+        }
+
     }
 }

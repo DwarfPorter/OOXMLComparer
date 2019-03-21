@@ -4,6 +4,7 @@ using OOXMLComparer.Properties;
 
 namespace OOXMLComparer.Test.Runs
 {
+    [Category("OOXML")]
     public class BorderComparerTests
     {
         [Test]
@@ -11,8 +12,7 @@ namespace OOXMLComparer.Test.Runs
         {
             var a = new Border { Val = BorderValues.Single };
             var b = new Border { Val = BorderValues.Single };
-            var borderComparer = new BorderComparer(a, b);
-            Assert.IsTrue(borderComparer.Compare());
+            Assert.IsTrue(ComparerFactory.Create(a, b).Compare());
         }
 
         [Test]
@@ -31,10 +31,7 @@ namespace OOXMLComparer.Test.Runs
             var a1 = new Border { Val = BorderValues.Nil };
             var BorderComparer = new BorderComparer(a, null);
             Assert.IsTrue(BorderComparer.Compare());
-            Assert.IsTrue(new BorderComparer(null, a).Compare());
             Assert.IsTrue(new BorderComparer(a1, null).Compare());
-            Assert.IsTrue(new BorderComparer(null, a1).Compare());
-            Assert.IsTrue(new BorderComparer(null, null).Compare());
         }
 
         [Test]
@@ -43,7 +40,6 @@ namespace OOXMLComparer.Test.Runs
             var a = new Border { Val = BorderValues.Single };
             var BorderComparer = new BorderComparer(a, null);
             Assert.IsFalse(BorderComparer.Compare());
-            Assert.IsFalse(new BorderComparer(null, a).Compare());
         }
     }
 }

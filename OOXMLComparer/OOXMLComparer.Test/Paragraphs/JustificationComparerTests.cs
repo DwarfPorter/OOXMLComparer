@@ -1,9 +1,10 @@
 ﻿using DocumentFormat.OpenXml.Wordprocessing;
 using NUnit.Framework;
-using OOXMLComparer.Paragraphs.ParaProperties;
+using OOXMLComparer.Paragraphs.ParagraphProperties;
 
 namespace OOXMLComparer.Test.Paragraphs
 {
+    [Category("OOXML")]
     public class JustificationComparerTests
     {
         [Test]
@@ -19,10 +20,8 @@ namespace OOXMLComparer.Test.Paragraphs
         {
             var a = new Justification();
             Assert.IsTrue(new JustificationComparer(a, null).Compare());
-            Assert.IsTrue(new JustificationComparer(null, a).Compare());
             a.Val = JustificationValues.Center;
             Assert.IsFalse(new JustificationComparer(a, null).Compare());
-            Assert.IsFalse(new JustificationComparer(null, a).Compare());
         }
 
         [Test]

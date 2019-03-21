@@ -1,9 +1,10 @@
 ﻿using DocumentFormat.OpenXml.Wordprocessing;
 using NUnit.Framework;
-using OOXMLComparer.Paragraphs.ParaProperties;
+using OOXMLComparer.Paragraphs.ParagraphProperties;
 
 namespace OOXMLComparer.Test.Paragraphs
 {
+    [Category("OOXML")]
     public class ParagraphMarkRunPropertiesComparerTests
     {
         [Test]

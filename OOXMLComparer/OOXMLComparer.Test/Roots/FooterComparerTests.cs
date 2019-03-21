@@ -4,6 +4,7 @@ using OOXMLComparer.Roots;
 
 namespace OOXMLComparer.Test.Roots
 {
+    [Category("OOXML")]
     public class FooterComparerTests
     {
         [Test]
@@ -11,7 +12,7 @@ namespace OOXMLComparer.Test.Roots
         {
             var a = new Footer();
             var b = new Footer();
-            Assert.IsTrue(new FooterComparer(a, b).Compare());
+            Assert.IsTrue(ComparerFactory.Create(a, b).Compare());
         }
 
         [Test]

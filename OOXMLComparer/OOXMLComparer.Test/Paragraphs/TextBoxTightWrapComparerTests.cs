@@ -1,9 +1,10 @@
 ﻿using DocumentFormat.OpenXml.Wordprocessing;
 using NUnit.Framework;
-using OOXMLComparer.Paragraphs.ParaProperties;
+using OOXMLComparer.Paragraphs.ParagraphProperties;
 
 namespace OOXMLComparer.Test.Paragraphs
 {
+    [Category("OOXML")]
     public class TextBoxTightWrapComparerTests
     {
         [Test]
@@ -11,7 +12,7 @@ namespace OOXMLComparer.Test.Paragraphs
         {
             var a = new TextBoxTightWrap();
             var b = new TextBoxTightWrap();
-            Assert.IsTrue(new TextBoxTightWrapComparer(a, b).Compare());
+            Assert.IsTrue(ComparerFactory.Create(a, b).Compare());
         }
         [Test]
         public void TextBoxTightWrapComparerWrongTest()

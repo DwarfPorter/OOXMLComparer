@@ -4,6 +4,7 @@ using OOXMLComparer.Tables.TableProperties;
 
 namespace OOXMLComparer.Test.Tables.TableProperties
 {
+    [Category("OOXML")]
     public class TablePositionPropertiesComparerTests
     {
         [Test]
@@ -11,7 +12,7 @@ namespace OOXMLComparer.Test.Tables.TableProperties
         {
             var a = new TablePositionProperties();
             var b = new TablePositionProperties();
-            Assert.IsTrue(new TablePositionPropertiesComparer(a, b).Compare());
+            Assert.IsTrue(ComparerFactory.Create(a, b).Compare());
         }
 
         [Test]

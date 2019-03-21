@@ -4,6 +4,7 @@ using OOXMLComparer.Properties;
 
 namespace OOXMLComparer.Test.Runs
 {
+    [Category("OOXML")]
     public class ItalicComparerTests
     {
         [Test]
@@ -31,7 +32,6 @@ namespace OOXMLComparer.Test.Runs
             Italic b = null;
             var ItalicComparer = new ItalicComparer(a, b);
             Assert.IsFalse(ItalicComparer.Compare());
-            Assert.IsFalse(new ItalicComparer(b, a).Compare());
         }
 
         [Test]
@@ -41,8 +41,6 @@ namespace OOXMLComparer.Test.Runs
             Italic b = null;
             var ItalicComparer = new ItalicComparer(a, b);
             Assert.IsTrue(ItalicComparer.Compare());
-            Assert.IsTrue(new ItalicComparer(b, a).Compare());
-            Assert.IsTrue(new ItalicComparer(null, null).Compare());
         }
     }
 }

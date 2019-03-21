@@ -1,8 +1,5 @@
 ﻿using DocumentFormat.OpenXml.Wordprocessing;
 using OOXMLComparer.Helpers;
-using OOXMLComparer.Properties;
-using System;
-using System.Linq;
 
 namespace OOXMLComparer.Texts
 {
@@ -14,7 +11,7 @@ namespace OOXMLComparer.Texts
 
         public override bool Compare()
         {
-            return a.CompareOrderedChildren(b, t => ((Run)t).RunProperties);
+            return a.CompareOrderedChildren(b);
         }
     }
 }

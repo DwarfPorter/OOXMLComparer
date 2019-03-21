@@ -4,6 +4,7 @@ using OOXMLComparer.Properties;
 
 namespace OOXMLComparer.Test.Runs
 {
+    [Category("OOXML")]
     public class UnderlineComparerTests
     {
         [Test]
@@ -21,8 +22,6 @@ namespace OOXMLComparer.Test.Runs
             var a = new Underline { Val = UnderlineValues.None };
             var underlineComparer = new UnderlineComparer(a, null);
             Assert.IsTrue(underlineComparer.Compare());
-            Assert.IsTrue(new UnderlineComparer(null, a).Compare());
-            Assert.IsTrue(new UnderlineComparer(null, null).Compare());
         }
 
         [Test]
@@ -30,7 +29,6 @@ namespace OOXMLComparer.Test.Runs
         {
             var a = new Underline { Val = UnderlineValues.DashLong };
             Assert.IsFalse(new UnderlineComparer(a, null).Compare());
-            Assert.IsFalse(new UnderlineComparer(null, a).Compare());
         }
 
         [Test]

@@ -4,6 +4,7 @@ using OOXMLComparer.Roots;
 
 namespace OOXMLComparer.Test.Roots
 {
+    [Category("OOXML")]
     public class DocumentComparerTests
     {
         [Test]
@@ -11,7 +12,7 @@ namespace OOXMLComparer.Test.Roots
         {
             var a = new Document();
             var b = new Document();
-            Assert.IsTrue(new DocumentComparer(a, b).Compare());
+            Assert.IsTrue(ComparerFactory.Create(a, b).Compare());
         }
 
         [Test]

@@ -4,24 +4,25 @@ using OOXMLComparer.Paragraphs.SectionProperties;
 
 namespace OOXMLComparer.Test.Paragraphs.SectionProperties
 {
+    [Category("OOXML")]
     public class SectionPropertiesComparerTests
     {
         [Test]
-        public void PageMarginComparerTest()
+        public void SectionPropertiesComparerTest()
         {
             var a = new DocumentFormat.OpenXml.Wordprocessing.SectionProperties();
             var b = new DocumentFormat.OpenXml.Wordprocessing.SectionProperties();
             Assert.IsTrue(new SectionPropertiesComparer(a, b).Compare());
         }
         [Test]
-        public void PageMarginComparerHappyTest()
+        public void SectionPropertiesComparerHappyTest()
         {
             var a = new DocumentFormat.OpenXml.Wordprocessing.SectionProperties(new PageBorders());
             var b = new DocumentFormat.OpenXml.Wordprocessing.SectionProperties(new PageBorders());
             Assert.IsTrue(new SectionPropertiesComparer(a, b).Compare());
         }
         [Test]
-        public void PageMarginComparerWrongTest()
+        public void SectionPropertiesComparerWrongTest()
         {
             var a = new DocumentFormat.OpenXml.Wordprocessing.SectionProperties(new PageBorders(new TopBorder()));
             var b = new DocumentFormat.OpenXml.Wordprocessing.SectionProperties();

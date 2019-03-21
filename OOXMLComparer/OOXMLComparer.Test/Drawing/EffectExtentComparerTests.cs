@@ -4,6 +4,7 @@ using OOXMLComparer.Drawing;
 
 namespace OOXMLComparer.Test
 {
+    [Category("OOXML")]
     public class EffectExtentComparerTests
     {
         [Test]

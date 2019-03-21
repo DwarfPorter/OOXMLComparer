@@ -4,6 +4,7 @@ using OOXMLComparer.Roots;
 
 namespace OOXMLComparer.Test.Roots
 {
+    [Category("OOXML")]
     public class HeaderComparerTests
     {
         [Test]
@@ -11,7 +12,7 @@ namespace OOXMLComparer.Test.Roots
         {
             var a = new Header();
             var b = new Header();
-            Assert.IsTrue(new HeaderComparer(a, b).Compare());
+            Assert.IsTrue(ComparerFactory.Create(a, b).Compare());
         }
 
         [Test]

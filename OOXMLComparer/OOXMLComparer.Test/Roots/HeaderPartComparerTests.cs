@@ -5,6 +5,7 @@ using OOXMLComparer.Roots;
 
 namespace OOXMLComparer.Test.Roots
 {
+    [Category("OOXML")]
     public class HeaderPartComparerTests
     {
         [Test]

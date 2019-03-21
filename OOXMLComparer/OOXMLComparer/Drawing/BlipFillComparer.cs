@@ -1,5 +1,4 @@
 ﻿using DocumentFormat.OpenXml.Drawing;
-using DocumentFormat.OpenXml.Wordprocessing;
 using OOXMLComparer.Helpers;
 
 namespace OOXMLComparer.Drawing

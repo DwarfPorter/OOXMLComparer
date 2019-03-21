@@ -4,6 +4,7 @@ using OOXMLComparer.Texts;
 
 namespace OOXMLComparer.Test.Runs
 {
+    [Category("OOXML")]
     public class SoftHyphenComparerTests
     {
         [Test]
@@ -12,9 +13,7 @@ namespace OOXMLComparer.Test.Runs
             var a = new SoftHyphen();
             var b = new SoftHyphen();
             Assert.IsTrue(new SoftHyphenComparer(a, b).Compare());
-            Assert.IsTrue(new SoftHyphenComparer(null, null).Compare());
             Assert.IsFalse(new SoftHyphenComparer(a, null).Compare());
-            Assert.IsFalse(new SoftHyphenComparer(null, a).Compare());
         }
     }
 

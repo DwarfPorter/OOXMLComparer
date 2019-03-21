@@ -1,7 +1,7 @@
 ﻿using DocumentFormat.OpenXml.Wordprocessing;
 using OOXMLComparer.Helpers;
 
-namespace OOXMLComparer.Paragraphs.ParaProperties
+namespace OOXMLComparer.Paragraphs.ParagraphProperties
 {
     public class TextBoxTightWrapComparer : OpenXmlElementComparer<TextBoxTightWrap>
     {

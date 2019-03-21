@@ -2,7 +2,7 @@
 using OOXMLComparer.Helpers;
 using System;
 
-namespace OOXMLComparer.Paragraphs.ParaProperties
+namespace OOXMLComparer.Paragraphs.ParagraphProperties
 {
     public class TabsComparer : OpenXmlElementComparer<Tabs>
     {

@@ -4,6 +4,7 @@ using OOXMLComparer.Drawing;
 
 namespace OOXMLComparer.Test
 {
+    [Category("OOXML")]
     public class GraphicFrameLocksComparerTests
     {
         [Test]
@@ -19,11 +20,8 @@ namespace OOXMLComparer.Test
         {
             var a = new GraphicFrameLocks();
             Assert.IsTrue(new GraphicFrameLocksComparer(a, null).Compare());
-            Assert.IsTrue(new GraphicFrameLocksComparer(null, a).Compare());
-            Assert.IsTrue(new GraphicFrameLocksComparer(null, null).Compare());
             a.NoGrouping = true;
             Assert.IsFalse(new GraphicFrameLocksComparer(a, null).Compare());
-            Assert.IsFalse(new GraphicFrameLocksComparer(null, a).Compare());
         }
 
         [Test]

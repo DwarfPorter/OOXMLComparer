@@ -11,7 +11,7 @@ namespace OOXMLComparer.Tables
 
         public override bool Compare()
         {
-            return a.CompareOrderedChildren(b, t => ((TableCell)t).TableCellProperties);
+            return a.CompareOrderedChildren(b);
         }
     }
 }

@@ -4,6 +4,7 @@ using OOXMLComparer.Tables.TableProperties;
 
 namespace OOXMLComparer.Test.Tables.TableProperties
 {
+    [Category("OOXML")]
     public class TableCaptionComparerTests
     {
         [Test]
@@ -11,7 +12,7 @@ namespace OOXMLComparer.Test.Tables.TableProperties
         {
             var a = new TableCaption();
             var b = new TableCaption();
-            Assert.IsTrue(new TableCaptionComparer(a, b).Compare());
+            Assert.IsTrue(ComparerFactory.Create(a, b).Compare());
         }
 
         [Test]

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 
 namespace OOXMLComparer.Test.Runs
 {
+    [Category("OOXML")]
     public class RunPropertiesComparerTests
     {
         [Test]
@@ -37,19 +38,6 @@ namespace OOXMLComparer.Test.Runs
             var b3 = new RunProperties (new List<OpenXmlElement> { new Underline{Val = UnderlineValues.DashLong} });
             Assert.IsTrue(new RunPropertiesComparer(a3, b3).Compare());
 
-        }
-
-        [Test]
-        public void RunPropertiesComparerNullTest()
-        {
-            Assert.IsTrue(new RunPropertiesComparer(null, null).Compare());
-        }
-
-        [Test]
-        public void RunPropertiesComparerANullTest()
-        {
-            var a = new RunProperties();
-            Assert.IsTrue(new RunPropertiesComparer(null, a).Compare());
         }
 
         [Test]

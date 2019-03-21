@@ -4,6 +4,7 @@ using OOXMLComparer.Drawing;
 
 namespace OOXMLComparer.Test
 {
+    [Category("OOXML")]
     public class PictureLocksComparerTests
     {
         [Test]
@@ -19,11 +20,9 @@ namespace OOXMLComparer.Test
         {
             var a = new PictureLocks();
             Assert.IsTrue(new PictureLocksComparer(a, null).Compare());
-            Assert.IsTrue(new PictureLocksComparer(null, a).Compare());
-            Assert.IsTrue(new PictureLocksComparer(null, null).Compare());
             a.NoRotation = true;
             Assert.IsFalse(new PictureLocksComparer(a, null).Compare());
-            Assert.IsFalse(new PictureLocksComparer(null, a).Compare());
+
         }
 
         [Test]

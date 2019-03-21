@@ -4,6 +4,7 @@ using OOXMLComparer.Properties;
 
 namespace OOXMLComparer.Test.Runs
 {
+    [Category("OOXML")]
     public class FontSizeComparerTests
     {
         [Test]
@@ -13,7 +14,6 @@ namespace OOXMLComparer.Test.Runs
             var b = new FontSize { Val = "5" };
             var fontSizeComparer = new FontSizeComparer(a, b);
             Assert.IsTrue(fontSizeComparer.Compare());
-            Assert.IsTrue(new FontSizeComparer(null, null).Compare());
         }
 
         [Test]
@@ -24,7 +24,6 @@ namespace OOXMLComparer.Test.Runs
             var fontSizeComparer = new FontSizeComparer(a, b);
             Assert.IsFalse(fontSizeComparer.Compare());
             Assert.IsFalse(new FontSizeComparer(a, null).Compare());
-            Assert.IsFalse(new FontSizeComparer(null, b).Compare());
         }
     }
 }

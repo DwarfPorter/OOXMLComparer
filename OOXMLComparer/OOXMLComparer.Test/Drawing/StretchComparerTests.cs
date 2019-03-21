@@ -4,6 +4,7 @@ using OOXMLComparer.Drawing;
 
 namespace OOXMLComparer.Test
 {
+    [Category("OOXML")]
     public class StretchComparerTests
     {
         [Test]
@@ -19,8 +20,6 @@ namespace OOXMLComparer.Test
         {
             var a = new Stretch();
             Assert.IsTrue(new StretchComparer(a, null).Compare());
-            Assert.IsTrue(new StretchComparer(null, a).Compare());
-            Assert.IsTrue(new StretchComparer(null, null).Compare());
         }
 
         [Test]

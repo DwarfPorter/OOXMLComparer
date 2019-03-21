@@ -4,6 +4,7 @@ using OOXMLComparer.Tables;
 
 namespace OOXMLComparer.Test.Tables
 {
+    [Category("OOXML")]
     public class TableGridComparerTests
     {
         [Test]

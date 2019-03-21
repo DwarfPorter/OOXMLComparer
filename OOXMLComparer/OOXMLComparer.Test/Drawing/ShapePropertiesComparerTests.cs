@@ -4,6 +4,7 @@ using OOXMLComparer.Drawing;
 
 namespace OOXMLComparer.Test
 {
+    [Category("OOXML")]
     public class ShapePropertiesComparerTests
     {
         [Test]
@@ -28,8 +29,10 @@ namespace OOXMLComparer.Test
                     ),
                 new DocumentFormat.OpenXml.Drawing.PresetGeometry(
                     new DocumentFormat.OpenXml.Drawing.AdjustValueList()
-                ) { Preset = DocumentFormat.OpenXml.Drawing.ShapeTypeValues.Rectangle }
-            ) { BlackWhiteMode = BlackWhiteModeValues.Black };
+                )
+                { Preset = DocumentFormat.OpenXml.Drawing.ShapeTypeValues.Rectangle }
+            )
+            { BlackWhiteMode = BlackWhiteModeValues.Black };
             var b = new DocumentFormat.OpenXml.Drawing.Pictures.ShapeProperties(
                 new DocumentFormat.OpenXml.Drawing.Transform2D(
                     new DocumentFormat.OpenXml.Drawing.Extents() { Cx = 42, Cy = 42 }
@@ -38,7 +41,8 @@ namespace OOXMLComparer.Test
                     new DocumentFormat.OpenXml.Drawing.AdjustValueList()
                 )
                 { Preset = DocumentFormat.OpenXml.Drawing.ShapeTypeValues.Rectangle }
-            ) { BlackWhiteMode = BlackWhiteModeValues.Black };
+            )
+            { BlackWhiteMode = BlackWhiteModeValues.Black };
 
             Assert.IsTrue(new ShapePropertiesComparer(a, b).Compare());
         }
@@ -56,8 +60,6 @@ namespace OOXMLComparer.Test
         {
             var a = new DocumentFormat.OpenXml.Drawing.Pictures.ShapeProperties() { BlackWhiteMode = BlackWhiteModeValues.Black };
             Assert.IsFalse(new ShapePropertiesComparer(a, null).Compare());
-            Assert.IsFalse(new ShapePropertiesComparer(null, a).Compare());
-            Assert.IsTrue(new ShapePropertiesComparer(null, null).Compare());
         }
 
         [Test]

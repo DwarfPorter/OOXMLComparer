@@ -4,6 +4,7 @@ using OOXMLComparer.Tables;
 
 namespace OOXMLComparer.Test.Tables
 {
+    [Category("OOXML")]
     public class TableCellComparerTests
     {
         [Test]
@@ -17,7 +18,7 @@ namespace OOXMLComparer.Test.Tables
         [Test]
         public void TableCellComparerHappyTest()
         {
-            var a = new TableCell(new TableCellProperties { NoWrap = new NoWrap { Val = OnOffOnlyValues.On } }, new Run(new Text("aaa")));
+            var a = new TableCell(new Run(new Text("aaa")), new TableCellProperties { NoWrap = new NoWrap { Val = OnOffOnlyValues.On } });
             var b = new TableCell(new Run(new Text("aaa"))) { TableCellProperties = new TableCellProperties { NoWrap = new NoWrap { Val = OnOffOnlyValues.On } } };
             Assert.IsTrue(new TableCellComparer(a, b).Compare());
         }

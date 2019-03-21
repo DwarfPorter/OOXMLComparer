@@ -4,6 +4,7 @@ using OOXMLComparer.Drawing;
 
 namespace OOXMLComparer.Test
 {
+    [Category("OOXML")]
     public class DocPropertiesComparerTests
     {
         [Test]
@@ -22,8 +23,6 @@ namespace OOXMLComparer.Test
         {
             var a = new DocProperties();
             Assert.IsTrue(new DocPropertiesComparer(a, null).Compare());
-            Assert.IsTrue(new DocPropertiesComparer(null, a).Compare());
-            Assert.IsTrue(new DocPropertiesComparer(null, null).Compare());
         }
 
         [Test]

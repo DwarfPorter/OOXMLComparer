@@ -4,6 +4,7 @@ using OOXMLComparer.Texts;
 
 namespace OOXMLComparer.Test.Runs
 {
+    [Category("OOXML")]
     public class CarriageReturnComparerTests
     {
         [Test]
@@ -11,10 +12,8 @@ namespace OOXMLComparer.Test.Runs
         {
             var a = new CarriageReturn();
             var b = new CarriageReturn();
-            Assert.IsTrue(new CarriageReturnComparer(a, b).Compare());
-            Assert.IsTrue(new CarriageReturnComparer(null, null).Compare());
+            Assert.IsTrue(ComparerFactory.Create(a, b).Compare());
             Assert.IsFalse(new CarriageReturnComparer(a, null).Compare());
-            Assert.IsFalse(new CarriageReturnComparer(null, a).Compare());
         }
     }
 

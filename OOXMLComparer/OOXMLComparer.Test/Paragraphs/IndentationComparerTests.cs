@@ -1,9 +1,10 @@
 ﻿using DocumentFormat.OpenXml.Wordprocessing;
 using NUnit.Framework;
-using OOXMLComparer.Paragraphs.ParaProperties;
+using OOXMLComparer.Paragraphs.ParagraphProperties;
 
 namespace OOXMLComparer.Test.Paragraphs
 {
+    [Category("OOXML")]
     public class IndentationComparerTests
     {
         [Test]
@@ -19,7 +20,6 @@ namespace OOXMLComparer.Test.Paragraphs
         {
             var a = new Indentation();
             Assert.IsFalse(new IndentationComparer(a, null).Compare());
-            Assert.IsFalse(new IndentationComparer(null, a).Compare());
         }
 
         [Test]

@@ -1,6 +1,6 @@
 ﻿using DocumentFormat.OpenXml.Wordprocessing;
 using OOXMLComparer.Helpers;
-using OOXMLComparer.Paragraphs.ParaProperties;
+using OOXMLComparer.Paragraphs.ParagraphProperties;
 using System.Linq;
 
 namespace OOXMLComparer.Paragraphs
@@ -13,7 +13,7 @@ namespace OOXMLComparer.Paragraphs
 
         public override bool Compare()
         {
-            return a.CompareOrderedChildren(b, t => ((Paragraph)t).ParagraphProperties);
+            return a.CompareOrderedChildren(b);
         }
     }
 }

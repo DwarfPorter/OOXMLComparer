@@ -4,6 +4,7 @@ using OOXMLComparer.Drawing;
 
 namespace OOXMLComparer.Test
 {
+    [Category("OOXML")]
     public class BlipFillComparerTests
     {
         [Test]
@@ -11,7 +12,7 @@ namespace OOXMLComparer.Test
         {
             var a = new BlipFill();
             var b = new BlipFill();
-            Assert.IsTrue(new BlipFillComparer(a, b).Compare());
+            Assert.IsTrue(ComparerFactory.Create(a, b).Compare());
         }
 
         [Test]
@@ -19,8 +20,6 @@ namespace OOXMLComparer.Test
         {
             var a = new BlipFill();
             Assert.IsFalse(new BlipFillComparer(a, null).Compare());
-            Assert.IsFalse(new BlipFillComparer(null, a).Compare());
-            Assert.IsTrue(new BlipFillComparer(null, null).Compare());
         }
 
         [Test]

@@ -4,6 +4,7 @@ using OOXMLComparer.Texts;
 
 namespace OOXMLComparer.Test.Runs
 {
+    [Category("OOXML")]
     public class RunComparerTests
     {
         [Test]

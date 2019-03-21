@@ -1,11 +1,11 @@
 ﻿using DocumentFormat.OpenXml.Wordprocessing;
 using OOXMLComparer.Helpers;
 
-namespace OOXMLComparer.Paragraphs.ParaProperties
+namespace OOXMLComparer.Paragraphs.ParagraphProperties
 {
-    public class ParagraphPropertiesComparer : OpenXmlElementComparer<ParagraphProperties>
+    public class ParagraphPropertiesComparer : OpenXmlElementComparer<DocumentFormat.OpenXml.Wordprocessing.ParagraphProperties>
     {
-        public ParagraphPropertiesComparer(ParagraphProperties a, ParagraphProperties b) : base(a, b)
+        public ParagraphPropertiesComparer(DocumentFormat.OpenXml.Wordprocessing.ParagraphProperties a, DocumentFormat.OpenXml.Wordprocessing.ParagraphProperties b) : base(a, b)
         {
         }
 

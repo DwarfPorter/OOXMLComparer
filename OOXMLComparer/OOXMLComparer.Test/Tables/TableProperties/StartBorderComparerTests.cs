@@ -4,6 +4,7 @@ using OOXMLComparer.Common;
 
 namespace OOXMLComparer.Test.Tables.TableProperties
 {
+    [Category("OOXML")]
     public class StartBorderComparerTests
     {
         [Test]
@@ -11,7 +12,7 @@ namespace OOXMLComparer.Test.Tables.TableProperties
         {
             var a = new StartBorder();
             var b = new StartBorder();
-            Assert.IsTrue(new StartBorderComparer(a, b).Compare());
+            Assert.IsTrue(ComparerFactory.Create(a, b).Compare());
         }
     }
 }

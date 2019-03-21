@@ -8,6 +8,7 @@ using System.Linq;
 
 namespace OOXMLComparer.Test
 {
+    [Category("OOXML")]
     public class BlipComparerTests
     {
 
@@ -85,7 +86,7 @@ namespace OOXMLComparer.Test
         {
             var a = doc1.Document.Descendants<Blip>().First();
             var b = doc2.Document.Descendants<Blip>().First();
-            Assert.IsTrue(new BlipComparer(a, b).Compare());
+            Assert.IsTrue(ComparerFactory.Create(a, b).Compare());
         }
 
         [Test]

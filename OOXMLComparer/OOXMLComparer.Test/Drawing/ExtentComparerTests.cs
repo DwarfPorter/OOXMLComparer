@@ -4,6 +4,7 @@ using OOXMLComparer.Drawing;
 
 namespace OOXMLComparer.Test
 {
+    [Category("OOXML")]
     public class ExtentComparerTests
     {
         [Test]
@@ -19,7 +20,6 @@ namespace OOXMLComparer.Test
         {
             var f = new Extent { Cx = 0, Cy = 0 };
             Assert.IsTrue(new ExtentComparer(f, null).Compare());
-            Assert.IsTrue(new ExtentComparer(null, f).Compare());
         }
 
         [Test]
@@ -37,7 +37,6 @@ namespace OOXMLComparer.Test
             var b = new Extent { Cx = 666, Cy = 555 };
             Assert.IsFalse(new ExtentComparer(a, b).Compare());
             Assert.IsFalse(new ExtentComparer(a, null).Compare());
-            Assert.IsFalse(new ExtentComparer(null, a).Compare());
         }
     }
 }

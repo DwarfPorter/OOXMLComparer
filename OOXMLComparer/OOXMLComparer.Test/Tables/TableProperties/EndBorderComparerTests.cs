@@ -4,6 +4,7 @@ using OOXMLComparer.Common;
 
 namespace OOXMLComparer.Test.Tables.TableProperties
 {
+    [Category("OOXML")]
     public class EndBorderComparerTests
     {
         [Test]
@@ -11,7 +12,7 @@ namespace OOXMLComparer.Test.Tables.TableProperties
         {
             var a = new EndBorder();
             var b = new EndBorder();
-            Assert.IsTrue(new EndBorderComparer(a, b).Compare());
+            Assert.IsTrue(ComparerFactory.Create(a, b).Compare());
         }
     }
 }

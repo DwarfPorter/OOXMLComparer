@@ -4,6 +4,7 @@ using OOXMLComparer.Texts;
 
 namespace OOXMLComparer.Test.Runs
 {
+    [Category("OOXML")]
     public class SymbolCharComparerTests
     {
         [Test]
@@ -12,9 +13,7 @@ namespace OOXMLComparer.Test.Runs
             var a = new SymbolChar();
             var b = new SymbolChar();
             Assert.IsTrue(new SymbolCharComparer(a, b).Compare());
-            Assert.IsTrue(new SymbolCharComparer(null, null).Compare());
             Assert.IsFalse(new SymbolCharComparer(a, null).Compare());
-            Assert.IsFalse(new SymbolCharComparer(null, b).Compare());
         }
 
         [Test]

@@ -4,6 +4,7 @@ using OOXMLComparer.Texts;
 
 namespace OOXMLComparer.Test.Runs
 {
+    [Category("OOXML")]
     public class BreakComparerTests
     {
         [Test]
@@ -19,8 +20,6 @@ namespace OOXMLComparer.Test.Runs
         {
             var a = new Break();
             Assert.IsFalse(new BreakComparer(a, null).Compare());
-            Assert.IsFalse(new BreakComparer(null, a).Compare());
-            Assert.IsTrue(new BreakComparer(null, null).Compare());
         }
 
         [Test]

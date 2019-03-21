@@ -4,6 +4,7 @@ using OOXMLComparer.Properties;
 
 namespace OOXMLComparer.Test.Runs
 {
+    [Category("OOXML")]
     public class RunFontsCompareTests
     {
         [Test]
@@ -13,7 +14,6 @@ namespace OOXMLComparer.Test.Runs
             var b = new RunFonts() { Ascii = "Arial", HighAnsi = "Calibri" };
             var fontComparer = new RunFontsComparer(a, b);
             Assert.IsTrue(fontComparer.Compare());
-            Assert.IsTrue(new RunFontsComparer(null, null).Compare());
         }
 
         [Test]
@@ -24,7 +24,6 @@ namespace OOXMLComparer.Test.Runs
             var fontComparer = new RunFontsComparer(a, b);
             Assert.IsFalse(fontComparer.Compare());
             Assert.IsFalse(new RunFontsComparer(a, null).Compare());
-            Assert.IsFalse(new RunFontsComparer(null, b).Compare());
         }
     }
 }

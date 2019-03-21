@@ -1,4 +1,6 @@
-﻿using OOXMLComparer.Helpers;
+﻿using DocumentFormat.OpenXml.Wordprocessing;
+using OOXMLComparer.Helpers;
+using System.Linq;
 
 namespace OOXMLComparer.Paragraphs.SectionProperties
 {
@@ -10,7 +12,17 @@ namespace OOXMLComparer.Paragraphs.SectionProperties
 
         public override bool Compare()
         {
-            return a.CompareChildren2(b);
+            var aHeaderReferences = a.Descendants<HeaderReference>().OrderBy(t => t.Type.Value);
+            var bHeaderReferences = b.Descendants<HeaderReference>().OrderBy(t => t.Type.Value);
+            var aFooterReferences = a.Descendants<FooterReference>().OrderBy(t => t.Type.Value);
+            var bFooterReferences = b.Descendants<FooterReference>().OrderBy(t => t.Type.Value);
+            var aOtherElement = a.ChildElements.Where(t => (t.GetType() != typeof(HeaderReference)) && (t.GetType() != typeof(FooterReference)));
+            var bOtherElement = b.ChildElements.Where(t => (t.GetType() != typeof(HeaderReference)) && (t.GetType() != typeof(FooterReference)));
+
+            return a.CompareNullElements(b) 
+                ?? aHeaderReferences.CompareOrderedChildren(bHeaderReferences)
+                && aFooterReferences.CompareOrderedChildren(bFooterReferences)
+                && aOtherElement.CompareChildren2(bOtherElement);
         }
     }
 }

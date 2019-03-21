@@ -6,21 +6,9 @@ using System.Linq;
 
 namespace OOXMLComparer.Test.Roots
 {
+    [Category("OOXML")]
     public class MainDocumentPartComparerTests
     {
-        [Test]
-        public void MainDocumentPartComparerTest()
-        {
-            using (WordprocessingDocument aDoc = WordprocessingDocument.Create("test1.docx", DocumentFormat.OpenXml.WordprocessingDocumentType.Document))
-            {
-                using (WordprocessingDocument bDoc = WordprocessingDocument.Create("test2.docx", DocumentFormat.OpenXml.WordprocessingDocumentType.Document))
-                {
-                    var a = aDoc.AddMainDocumentPart();
-                    var b = bDoc.AddMainDocumentPart();
-                    Assert.IsTrue(new MainDocumentPartComparer(a, b).Compare());
-                }
-            }
-        }
         [Test]
         public void MainDocumentPartComparerWrongTest()
         {

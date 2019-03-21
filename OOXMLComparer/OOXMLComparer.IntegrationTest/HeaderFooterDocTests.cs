@@ -7,6 +7,7 @@ using System.Linq;
 
 namespace Tests
 {
+    [Category("OOXML")]
     public class HeaderFooterDocTests
     {
         [TestCase("HeaderDoc1.docx", "HeaderDoc2.docx")]

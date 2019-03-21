@@ -4,6 +4,7 @@ using OOXMLComparer.Texts;
 
 namespace OOXMLComparer.Test.Runs
 {
+    [Category("OOXML")]
     public class NoBreakHyphenComparerTests
     {
         [Test]
@@ -11,10 +12,8 @@ namespace OOXMLComparer.Test.Runs
         {
             var a = new NoBreakHyphen();
             var b = new NoBreakHyphen();
-            Assert.IsTrue(new NoBreakHyphenComparer(a, b).Compare());
-            Assert.IsTrue(new NoBreakHyphenComparer(null, null).Compare());
+            Assert.IsTrue(ComparerFactory.Create(a, b).Compare());
             Assert.IsFalse(new NoBreakHyphenComparer(a, null).Compare());
-            Assert.IsFalse(new NoBreakHyphenComparer(null, a).Compare());
         }
     }
 

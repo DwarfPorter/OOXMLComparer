@@ -4,6 +4,7 @@ using OOXMLComparer.Properties;
 
 namespace OOXMLComparer.Test.Runs
 {
+    [Category("OOXML")]
     public class BoldComparerTests
     {
         [Test]
@@ -40,8 +41,6 @@ namespace OOXMLComparer.Test.Runs
             Bold b = null;
             var boldComparer = new BoldComparer(a, b);
             Assert.IsFalse(boldComparer.Compare());
-            boldComparer = new BoldComparer(b, a);
-            Assert.IsFalse(boldComparer.Compare());
         }
 
         [Test]
@@ -50,10 +49,6 @@ namespace OOXMLComparer.Test.Runs
             var a = new Bold { Val = false };
             Bold b = null;
             var boldComparer = new BoldComparer(a, b);
-            Assert.IsTrue(boldComparer.Compare());
-            boldComparer = new BoldComparer(b, a);
-            Assert.IsTrue(boldComparer.Compare());
-            boldComparer = new BoldComparer(null, null);
             Assert.IsTrue(boldComparer.Compare());
         }
     }

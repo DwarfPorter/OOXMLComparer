@@ -6,6 +6,7 @@ using System.IO;
 
 namespace Tests
 {
+    [Category("OOXML")]
     public class WordDocumentTests
     {
         [TestCase("SimpleDoc1.docx", "SimpleDoc2.docx")]

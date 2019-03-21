@@ -18,7 +18,6 @@ namespace OOXMLComparer.Helpers
             {
                 return false;
             }
-            var creatorComparer = new CreatorComparer();
             var cnt = childrenA.Length;
             for (var i = 0; i < cnt; i++)
             {
@@ -26,7 +25,7 @@ namespace OOXMLComparer.Helpers
                 {
                     return false;
                 }
-                IOpenXmlComparer comparer = creatorComparer.Create(childrenA[i], childrenB[i]);
+                IOpenXmlComparer comparer = ComparerFactory.Create(childrenA[i], childrenB[i]);
                 if (!comparer.Compare())
                 {
                     return false;
@@ -35,35 +34,18 @@ namespace OOXMLComparer.Helpers
             return true;
         }
 
-        public static bool CompareOrderedChildren(this OpenXmlElement a, OpenXmlElement b, Type typeProperties)
+        public static bool CompareOrderedChildren(this OpenXmlElement a, OpenXmlElement b)
         {
-            return CompareOrderedChildren(a.ChildElements.Where(p => p.GetType() != typeProperties), b.ChildElements.Where(p => p.GetType() != typeProperties));
+            return a.CompareNullElements(b) ?? CompareOrderedChildren(a.ChildElements, b.ChildElements);
         }
 
-        public static bool CompareOrderedChildren<TProperties>(this OpenXmlElement a, OpenXmlElement b, Func<OpenXmlElement, TProperties> propertyForCompare) where TProperties : OpenXmlElement
+        public static bool CompareChildren(this IEnumerable<OpenXmlElement> childrenA, IEnumerable<OpenXmlElement> childrenB)
         {
-            var answer = a.CompareNullElements(b);
-            if (answer != null)
-            {
-                return answer.Value;
-            }
-            var propComparer = new CreatorComparer().Create(propertyForCompare(a), propertyForCompare(b));
-            var answer2 = propComparer.Compare();
-            if (!answer2)
-            {
-                return answer2;
-            }
-            return a.CompareOrderedChildren(b, typeof(TProperties));
-        }
-
-        public static bool CompareChildren(this OpenXmlElementList childrenA, OpenXmlElementList childrenB)
-        {
-            var creatorComparer = new CreatorComparer();
             foreach (var childA in childrenA)
             {
                 Type type = childA.GetType();
                 var childB = childrenB.FirstOrDefault(p => p.GetType() == type);
-                var childComparer = creatorComparer.Create(childA, childB);
+                var childComparer = ComparerFactory.Create(childA, childB);
                 if (!childComparer.Compare())
                 {
                     return false;
@@ -72,27 +54,18 @@ namespace OOXMLComparer.Helpers
             return true;
         }
 
-        public static bool CompareChildren2(this OpenXmlElementList childrenA, OpenXmlElementList childrenB)
+        public static bool CompareChildren2(this IEnumerable<OpenXmlElement> childrenA, IEnumerable<OpenXmlElement> childrenB)
         {
             return CompareChildren(childrenA, childrenB) && CompareChildren(childrenB, childrenA);
         }
 
         public static bool CompareChildren2(this OpenXmlElement a, OpenXmlElement b)
         {
-
-            if (a == null && b == null)
-            {
-                return true;
-            }
-            if (a == null && !b.ChildElements.Any())
-            {
-                return true;
-            }
             if (!a.ChildElements.Any() && b == null)
             {
                 return true;
             }
-            if (a == null || b == null)
+            if (b == null)
             {
                 return false;
             }
@@ -103,11 +76,7 @@ namespace OOXMLComparer.Helpers
 
         public static bool? CompareNullElements(this OpenXmlElement a, OpenXmlElement b)
         {
-            if (a == null && b == null)
-            {
-                return true;
-            }
-            if (a == null || b == null)
+            if (b == null)
             {
                 return false;
             }
@@ -116,21 +85,9 @@ namespace OOXMLComparer.Helpers
 
         public static bool? CompareNullElements<T>(this T a, T b, Func<T, bool> checkNullorDefault) where T : OpenXmlElement
         {
-            if (a == null && b == null)
+            if (b == null)
             {
-                return true;
-            }
-            if (a == null && checkNullorDefault(b))
-            {
-                return true;
-            }
-            if (b == null && checkNullorDefault(a))
-            {
-                return true;
-            }
-            if (a == null || b == null)
-            {
-                return false;
+                return checkNullorDefault(a);
             }
             return null;
         }

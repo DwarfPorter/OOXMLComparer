@@ -4,6 +4,7 @@ using OOXMLComparer.Tables.TableProperties;
 
 namespace OOXMLComparer.Test.Tables.TableProperties
 {
+    [Category("OOXML")]
     public class TableCellFitTextComparerTests
     {
         [Test]
@@ -11,7 +12,7 @@ namespace OOXMLComparer.Test.Tables.TableProperties
         {
             var a = new TableCellFitText() { Val = OnOffOnlyValues.On };
             var b = new TableCellFitText() { Val = OnOffOnlyValues.On };
-            Assert.IsTrue(new TableCellFitTextComparer(a, b).Compare());
+            Assert.IsTrue(ComparerFactory.Create(a, b).Compare());
         }
         [Test]
         public void TableCellFitTextComparerWrongTest()

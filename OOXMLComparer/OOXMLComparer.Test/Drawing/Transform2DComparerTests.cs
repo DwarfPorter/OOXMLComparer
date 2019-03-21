@@ -4,6 +4,7 @@ using OOXMLComparer.Drawing;
 
 namespace OOXMLComparer.Test
 {
+    [Category("OOXML")]
     public class Transform2DComparerTests
     {
         [Test]
@@ -13,8 +14,6 @@ namespace OOXMLComparer.Test
             var b = new Transform2D(new Offset { X = 1L }, new Extents { Cx = 444 });
             Assert.IsTrue(new Transform2DComparer(a, b).Compare());
             Assert.IsTrue(new Transform2DComparer(new Transform2D(), null).Compare());
-            Assert.IsTrue(new Transform2DComparer(null, new Transform2D()).Compare());
-            Assert.IsTrue(new Transform2DComparer(null, null).Compare());
             Assert.IsTrue(new Transform2DComparer(new Transform2D() { Offset = new Offset { X = 0L, Y = 0L } }, new Transform2D()).Compare());
         }
 

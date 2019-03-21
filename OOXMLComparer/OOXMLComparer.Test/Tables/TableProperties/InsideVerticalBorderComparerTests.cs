@@ -4,6 +4,7 @@ using OOXMLComparer.Common;
 
 namespace OOXMLComparer.Test.Tables.TableProperties
 {
+    [Category("OOXML")]
     public class InsideVerticalBorderComparerTests
     {
         [Test]

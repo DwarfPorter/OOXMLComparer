@@ -4,6 +4,7 @@ using OOXMLComparer.Drawing;
 
 namespace OOXMLComparer.Test
 {
+    [Category("OOXML")]
     public class NonVisualPicturePropertiesComparerTests
     {
         [Test]
@@ -27,8 +28,6 @@ namespace OOXMLComparer.Test
         {
             var a = new NonVisualPictureProperties();
             Assert.IsTrue(new NonVisualPicturePropertiesComparer(a, null).Compare());
-            Assert.IsTrue(new NonVisualPicturePropertiesComparer(null, a).Compare());
-            Assert.IsTrue(new NonVisualPicturePropertiesComparer(null, null).Compare());
         }
 
         [Test]

@@ -1,9 +1,10 @@
 ﻿using DocumentFormat.OpenXml.Wordprocessing;
 using NUnit.Framework;
-using OOXMLComparer.Paragraphs.ParaProperties;
+using OOXMLComparer.Paragraphs.ParagraphProperties;
 
 namespace OOXMLComparer.Test.Paragraphs
 {
+    [Category("OOXML")]
     public class FramePropertiesComparerTests
     {
         [Test]
@@ -11,7 +12,7 @@ namespace OOXMLComparer.Test.Paragraphs
         {
             var a = new FrameProperties();
             var b = new FrameProperties();
-            Assert.IsTrue(new FramePropertiesComparer(a, b).Compare());
+            Assert.IsTrue(ComparerFactory.Create(a, b).Compare());
         }
 
         [Test]
@@ -19,8 +20,6 @@ namespace OOXMLComparer.Test.Paragraphs
         {
             var a = new FrameProperties();
             Assert.IsFalse(new FramePropertiesComparer(a, null).Compare());
-            Assert.IsFalse(new FramePropertiesComparer(null, a).Compare());
-            Assert.IsTrue(new FramePropertiesComparer(null, null).Compare());
         }
 
         [Test]
